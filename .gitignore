@@ -10,18 +10,4 @@ Makefile
 .deps
 .libs
 
-config.*
-aclocal.m4
-autom4te.cache
-configure
-depcomp
-libtool
-install-sh
-missing
-ltmain.sh
-ylwrap
-compile
-stamp-h1
-*.pc
-*.service
 
