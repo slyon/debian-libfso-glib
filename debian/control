@@ -8,7 +8,7 @@ Section: libs
 Package: libfso-glib-dev
 Section: libdevel
 Architecture: any
-Depends: libfso-glib0 (= ${binary:Version}), ${misc:Depends}, pkg-config, libdbus-1-dev, libdbus-glib-1-dev
+Depends: libfso-glib0 (= ${binary:Version}), ${misc:Depends}, libdbus-1-dev, libdbus-glib-1-dev
 Description: Development files for libfso-glib
  freesmartphone.org GLib-based DBus bindings
  .
