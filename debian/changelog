@@ -1,3 +1,10 @@
+libfso-glib (0+git20090623-1) pkg-fso; urgency=low
+
+  * new upstream snapshot
+  * initial upload to pkg-fso
+
+ -- Heiko Stuebner <heiko@sntech.de>  Tue, 23 Jun 2009 18:48:12 +0200
+
 libfso-glib (0+git20090616-1) UNRELEASED; urgency=low
 
   * Initial release
