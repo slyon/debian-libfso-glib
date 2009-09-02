@@ -1,4 +1,4 @@
-libfso-glib (0+git20090623-1) pkg-fso; urgency=low
+libfso-glib (0+git20090623-1) unstable; urgency=low
 
   * new upstream snapshot
   * initial upload to pkg-fso
