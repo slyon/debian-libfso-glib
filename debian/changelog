@@ -1,9 +1,9 @@
 libfso-glib (0+git20090623-1) unstable; urgency=low
 
   * new upstream snapshot
-  * initial upload to pkg-fso
+  * initial upload to unstable
 
- -- Heiko Stuebner <heiko@sntech.de>  Tue, 23 Jun 2009 18:48:12 +0200
+ -- Heiko Stuebner <heiko@sntech.de>  Thu, 03 Sep 2009 09:10:12 +0200
 
 libfso-glib (0+git20090616-1) UNRELEASED; urgency=low
 
