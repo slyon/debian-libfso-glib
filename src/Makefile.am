@@ -6,6 +6,7 @@ AM_CFLAGS = \
 	-include $(CONFIG_HEADER)
 
 VALACFLAGS = \
+	--pkg gio-2.0 \
 	--pkg dbus-glib-1 \
 	--header freesmartphone.h \
 	--library fso-glib-1.0 \
@@ -28,7 +29,8 @@ libfso_glib_HEADERS = \
 	freesmartphone.h
 
 vapidir = $(datadir)/vala/vapi
-vapi_DATA = fso-glib-1.0.vapi
+vapi_DATA = fso-glib-1.0.vapi \
+	    fso-glib-1.0.deps
 
 girdir = $(datadir)/gir-1.0
 gir_DATA = FreeSmartphone-1.0.gir
