@@ -1,3 +1,10 @@
+libfso-glib (0.2.1-2) unstable; urgency=low
+
+  * A rebuild of libfso-glib seems to be needed for vala 0.7.7
+    to let the fixed fso-usaged 0.9.1+git20091016 work correctly.
+
+ -- Heiko Stuebner <heiko@sntech.de>  Sat, 19 Sep 2009 17:10:12 +0200
+
 libfso-glib (0.2.1-1) unstable; urgency=low
 
   * new upstream release
