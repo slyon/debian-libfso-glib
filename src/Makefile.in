@@ -61,8 +61,7 @@ libfso_glib_la_DEPENDENCIES = $(am__DEPENDENCIES_1) \
 am__objects_1 = freesmartphone.lo freesmartphone-device.lo \
 	freesmartphone-gsm.lo freesmartphone-time.lo \
 	freesmartphone-pim.lo freesmartphone-utils.lo
-am__objects_2 =
-am_libfso_glib_la_OBJECTS = $(am__objects_1) $(am__objects_2)
+am_libfso_glib_la_OBJECTS = $(am__objects_1)
 libfso_glib_la_OBJECTS = $(am_libfso_glib_la_OBJECTS)
 DEFAULT_INCLUDES = -I.@am__isrc@ -I$(top_builddir)
 depcomp = $(SHELL) $(top_srcdir)/depcomp
@@ -130,7 +129,6 @@ LIBTOOL = @LIBTOOL@
 LIPO = @LIPO@
 LN_S = @LN_S@
 LTLIBOBJS = @LTLIBOBJS@
-MAINT = @MAINT@
 MAKEINFO = @MAKEINFO@
 MKDIR_P = @MKDIR_P@
 NM = @NM@
@@ -245,8 +243,7 @@ vapi_DATA = fso-glib-1.0.vapi \
 girdir = $(datadir)/gir-1.0
 gir_DATA = FreeSmartphone-1.0.gir
 libfso_glib_la_SOURCES = \
-	$(libfso_glib_la_VALASOURCES:.vala=.c) \
-	$(libfso_glib_la_VALASOURCES:.vala=.h)
+	$(libfso_glib_la_VALASOURCES:.vala=.c)
 
 @TYPELIB_TRUE@typelibdir = $(libdir)/girepository-1.0
 @TYPELIB_TRUE@typelib_DATA = FreeSmartphone-1.0.typelib
@@ -273,7 +270,7 @@ all: $(BUILT_SOURCES)
 
 .SUFFIXES:
 .SUFFIXES: .c .lo .o .obj
-$(srcdir)/Makefile.in: @MAINTAINER_MODE_TRUE@ $(srcdir)/Makefile.am  $(am__configure_deps)
+$(srcdir)/Makefile.in:  $(srcdir)/Makefile.am  $(am__configure_deps)
 	@for dep in $?; do \
 	  case '$(am__configure_deps)' in \
 	    *$$dep*) \
@@ -298,9 +295,9 @@ Makefile: $(srcdir)/Makefile.in $(top_builddir)/config.status
 $(top_builddir)/config.status: $(top_srcdir)/configure $(CONFIG_STATUS_DEPENDENCIES)
 	cd $(top_builddir) && $(MAKE) $(AM_MAKEFLAGS) am--refresh
 
-$(top_srcdir)/configure: @MAINTAINER_MODE_TRUE@ $(am__configure_deps)
+$(top_srcdir)/configure:  $(am__configure_deps)
 	cd $(top_builddir) && $(MAKE) $(AM_MAKEFLAGS) am--refresh
-$(ACLOCAL_M4): @MAINTAINER_MODE_TRUE@ $(am__aclocal_m4_deps)
+$(ACLOCAL_M4):  $(am__aclocal_m4_deps)
 	cd $(top_builddir) && $(MAKE) $(AM_MAKEFLAGS) am--refresh
 install-libLTLIBRARIES: $(lib_LTLIBRARIES)
 	@$(NORMAL_INSTALL)
