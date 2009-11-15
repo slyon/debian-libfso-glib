@@ -1,6 +1,6 @@
-From 8a6c28bbd8e2e1913de6a7858a88f0cbae2edf55 Mon Sep 17 00:00:00 2001
+From 451b52d1f05cb65d028bc95fae3bab35661844a9 Mon Sep 17 00:00:00 2001
 From: Heiko Stuebner <heiko@sntech.de>
-Date: Sat, 19 Sep 2009 17:12:45 +0200
+Date: Sun, 15 Nov 2009 17:50:40 +0100
 Subject: [PATCH] make vala-dbus-binding-tool really optional
 
 ---
@@ -11,10 +11,10 @@ Subject: [PATCH] make vala-dbus-binding-tool really optional
  4 files changed, 14 insertions(+), 142 deletions(-)
 
 diff --git a/Makefile.in b/Makefile.in
-index d27e74f..0f7afc0 100644
+index e0681bc..a4229ca 100644
 --- a/Makefile.in
 +++ b/Makefile.in
-@@ -149,8 +149,6 @@ SPECS_PATH = @SPECS_PATH@
+@@ -148,8 +148,6 @@ SPECS_PATH = @SPECS_PATH@
  STRIP = @STRIP@
  VALAC = @VALAC@
  VALA_CFLAGS = @VALA_CFLAGS@
@@ -24,7 +24,7 @@ index d27e74f..0f7afc0 100644
  VERSION = @VERSION@
  abs_builddir = @abs_builddir@
 diff --git a/configure b/configure
-index a81a245..d41065f 100755
+index 2805bed..7dc68e5 100755
 --- a/configure
 +++ b/configure
 @@ -792,8 +792,6 @@ DBUS_LIBS
@@ -36,7 +36,7 @@ index a81a245..d41065f 100755
  VALA_LIBS
  VALA_CFLAGS
  PKG_CONFIG
-@@ -938,8 +936,6 @@ SPECS_PATH
+@@ -934,8 +932,6 @@ SPECS_PATH
  PKG_CONFIG
  VALA_CFLAGS
  VALA_LIBS
@@ -45,7 +45,7 @@ index a81a245..d41065f 100755
  GLIB_CFLAGS
  GLIB_LIBS
  DBUS_CFLAGS
-@@ -1605,11 +1601,6 @@ Some influential environment variables:
+@@ -1599,11 +1595,6 @@ Some influential environment variables:
    PKG_CONFIG  path to pkg-config utility
    VALA_CFLAGS C compiler flags for VALA, overriding pkg-config
    VALA_LIBS   linker flags for VALA, overriding pkg-config
@@ -57,107 +57,107 @@ index a81a245..d41065f 100755
    GLIB_CFLAGS C compiler flags for GLIB, overriding pkg-config
    GLIB_LIBS   linker flags for GLIB, overriding pkg-config
    DBUS_CFLAGS C compiler flags for DBUS, overriding pkg-config
-@@ -4547,13 +4538,13 @@ if test "${lt_cv_nm_interface+set}" = set; then
+@@ -4520,13 +4511,13 @@ if test "${lt_cv_nm_interface+set}" = set; then
  else
    lt_cv_nm_interface="BSD nm"
    echo "int some_variable = 0;" > conftest.$ac_ext
--  (eval echo "\"\$as_me:4550: $ac_compile\"" >&5)
-+  (eval echo "\"\$as_me:4541: $ac_compile\"" >&5)
+-  (eval echo "\"\$as_me:4523: $ac_compile\"" >&5)
++  (eval echo "\"\$as_me:4514: $ac_compile\"" >&5)
    (eval "$ac_compile" 2>conftest.err)
    cat conftest.err >&5
--  (eval echo "\"\$as_me:4553: $NM \\\"conftest.$ac_objext\\\"\"" >&5)
-+  (eval echo "\"\$as_me:4544: $NM \\\"conftest.$ac_objext\\\"\"" >&5)
+-  (eval echo "\"\$as_me:4526: $NM \\\"conftest.$ac_objext\\\"\"" >&5)
++  (eval echo "\"\$as_me:4517: $NM \\\"conftest.$ac_objext\\\"\"" >&5)
    (eval "$NM \"conftest.$ac_objext\"" 2>conftest.err > conftest.out)
    cat conftest.err >&5
--  (eval echo "\"\$as_me:4556: output\"" >&5)
-+  (eval echo "\"\$as_me:4547: output\"" >&5)
+-  (eval echo "\"\$as_me:4529: output\"" >&5)
++  (eval echo "\"\$as_me:4520: output\"" >&5)
    cat conftest.out >&5
    if $GREP 'External.*some_variable' conftest.out > /dev/null; then
      lt_cv_nm_interface="MS dumpbin"
-@@ -5759,7 +5750,7 @@ ia64-*-hpux*)
+@@ -5732,7 +5723,7 @@ ia64-*-hpux*)
    ;;
  *-*-irix6*)
    # Find out which ABI we are using.
--  echo '#line 5762 "configure"' > conftest.$ac_ext
-+  echo '#line 5753 "configure"' > conftest.$ac_ext
+-  echo '#line 5735 "configure"' > conftest.$ac_ext
++  echo '#line 5726 "configure"' > conftest.$ac_ext
    if { (eval echo "$as_me:$LINENO: \"$ac_compile\"") >&5
    (eval $ac_compile) 2>&5
    ac_status=$?
-@@ -7582,11 +7573,11 @@ else
+@@ -7555,11 +7546,11 @@ else
     -e 's:.*FLAGS}\{0,1\} :&$lt_compiler_flag :; t' \
     -e 's: [^ ]*conftest\.: $lt_compiler_flag&:; t' \
     -e 's:$: $lt_compiler_flag:'`
--   (eval echo "\"\$as_me:7585: $lt_compile\"" >&5)
-+   (eval echo "\"\$as_me:7576: $lt_compile\"" >&5)
+-   (eval echo "\"\$as_me:7558: $lt_compile\"" >&5)
++   (eval echo "\"\$as_me:7549: $lt_compile\"" >&5)
     (eval "$lt_compile" 2>conftest.err)
     ac_status=$?
     cat conftest.err >&5
--   echo "$as_me:7589: \$? = $ac_status" >&5
-+   echo "$as_me:7580: \$? = $ac_status" >&5
+-   echo "$as_me:7562: \$? = $ac_status" >&5
++   echo "$as_me:7553: \$? = $ac_status" >&5
     if (exit $ac_status) && test -s "$ac_outfile"; then
       # The compiler can only warn and ignore the option if not recognized
       # So say no if there are warnings other than the usual output.
-@@ -7921,11 +7912,11 @@ else
+@@ -7894,11 +7885,11 @@ else
     -e 's:.*FLAGS}\{0,1\} :&$lt_compiler_flag :; t' \
     -e 's: [^ ]*conftest\.: $lt_compiler_flag&:; t' \
     -e 's:$: $lt_compiler_flag:'`
--   (eval echo "\"\$as_me:7924: $lt_compile\"" >&5)
-+   (eval echo "\"\$as_me:7915: $lt_compile\"" >&5)
+-   (eval echo "\"\$as_me:7897: $lt_compile\"" >&5)
++   (eval echo "\"\$as_me:7888: $lt_compile\"" >&5)
     (eval "$lt_compile" 2>conftest.err)
     ac_status=$?
     cat conftest.err >&5
--   echo "$as_me:7928: \$? = $ac_status" >&5
-+   echo "$as_me:7919: \$? = $ac_status" >&5
+-   echo "$as_me:7901: \$? = $ac_status" >&5
++   echo "$as_me:7892: \$? = $ac_status" >&5
     if (exit $ac_status) && test -s "$ac_outfile"; then
       # The compiler can only warn and ignore the option if not recognized
       # So say no if there are warnings other than the usual output.
-@@ -8026,11 +8017,11 @@ else
+@@ -7999,11 +7990,11 @@ else
     -e 's:.*FLAGS}\{0,1\} :&$lt_compiler_flag :; t' \
     -e 's: [^ ]*conftest\.: $lt_compiler_flag&:; t' \
     -e 's:$: $lt_compiler_flag:'`
--   (eval echo "\"\$as_me:8029: $lt_compile\"" >&5)
-+   (eval echo "\"\$as_me:8020: $lt_compile\"" >&5)
+-   (eval echo "\"\$as_me:8002: $lt_compile\"" >&5)
++   (eval echo "\"\$as_me:7993: $lt_compile\"" >&5)
     (eval "$lt_compile" 2>out/conftest.err)
     ac_status=$?
     cat out/conftest.err >&5
--   echo "$as_me:8033: \$? = $ac_status" >&5
-+   echo "$as_me:8024: \$? = $ac_status" >&5
+-   echo "$as_me:8006: \$? = $ac_status" >&5
++   echo "$as_me:7997: \$? = $ac_status" >&5
     if (exit $ac_status) && test -s out/conftest2.$ac_objext
     then
       # The compiler can only warn and ignore the option if not recognized
-@@ -8081,11 +8072,11 @@ else
+@@ -8054,11 +8045,11 @@ else
     -e 's:.*FLAGS}\{0,1\} :&$lt_compiler_flag :; t' \
     -e 's: [^ ]*conftest\.: $lt_compiler_flag&:; t' \
     -e 's:$: $lt_compiler_flag:'`
--   (eval echo "\"\$as_me:8084: $lt_compile\"" >&5)
-+   (eval echo "\"\$as_me:8075: $lt_compile\"" >&5)
+-   (eval echo "\"\$as_me:8057: $lt_compile\"" >&5)
++   (eval echo "\"\$as_me:8048: $lt_compile\"" >&5)
     (eval "$lt_compile" 2>out/conftest.err)
     ac_status=$?
     cat out/conftest.err >&5
--   echo "$as_me:8088: \$? = $ac_status" >&5
-+   echo "$as_me:8079: \$? = $ac_status" >&5
+-   echo "$as_me:8061: \$? = $ac_status" >&5
++   echo "$as_me:8052: \$? = $ac_status" >&5
     if (exit $ac_status) && test -s out/conftest2.$ac_objext
     then
       # The compiler can only warn and ignore the option if not recognized
-@@ -10897,7 +10888,7 @@ else
+@@ -10870,7 +10861,7 @@ else
    lt_dlunknown=0; lt_dlno_uscore=1; lt_dlneed_uscore=2
    lt_status=$lt_dlunknown
    cat > conftest.$ac_ext <<_LT_EOF
--#line 10900 "configure"
-+#line 10891 "configure"
+-#line 10873 "configure"
++#line 10864 "configure"
  #include "confdefs.h"
  
  #if HAVE_DLFCN_H
-@@ -10993,7 +10984,7 @@ else
+@@ -10966,7 +10957,7 @@ else
    lt_dlunknown=0; lt_dlno_uscore=1; lt_dlneed_uscore=2
    lt_status=$lt_dlunknown
    cat > conftest.$ac_ext <<_LT_EOF
--#line 10996 "configure"
-+#line 10987 "configure"
+-#line 10969 "configure"
++#line 10960 "configure"
  #include "confdefs.h"
  
  #if HAVE_DLFCN_H
-@@ -11636,119 +11627,6 @@ $as_echo "yes" >&6; }
+@@ -11609,119 +11600,6 @@ $as_echo "yes" >&6; }
  	:
  fi
  
@@ -278,7 +278,7 @@ index a81a245..d41065f 100755
  pkg_failed=no
  { $as_echo "$as_me:$LINENO: checking for GLIB" >&5
 diff --git a/configure.ac b/configure.ac
-index 26e226d..b408f72 100644
+index c075047..4a10aff 100644
 --- a/configure.ac
 +++ b/configure.ac
 @@ -48,8 +48,6 @@ DBUS_REQUIRED=0.70
@@ -291,10 +291,10 @@ index 26e226d..b408f72 100644
  PKG_CHECK_MODULES(GLIB,
  	glib-2.0 >= $GLIB_REQUIRED
 diff --git a/src/Makefile.in b/src/Makefile.in
-index c03c14d..7997564 100644
+index 2d2a447..c77cebc 100644
 --- a/src/Makefile.in
 +++ b/src/Makefile.in
-@@ -155,8 +155,6 @@ SPECS_PATH = @SPECS_PATH@
+@@ -153,8 +153,6 @@ SPECS_PATH = @SPECS_PATH@
  STRIP = @STRIP@
  VALAC = @VALAC@
  VALA_CFLAGS = @VALA_CFLAGS@
