@@ -1,12 +1,7 @@
-Makefile
-*.o
-*.lo
-*.la
-*.c
-*.h
-*.stamp
-*.gir
-.deps
-.libs
-
+autom4te.cache
+ylwrap
+stamp-h1
+*.pc
+*.service
+*.vapi
 
