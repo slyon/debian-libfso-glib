@@ -1,12 +1,14 @@
 libfso-glib (0.2.1+git20100102-1) unstable; urgency=low
 
-  * new upstream snapshot
+  * New upstream snapshot
+  * Fixes FTBFS resulting from incompatibility with newer vala version
+    (Closes: #564359)
 
  -- Heiko Stuebner <heiko@sntech.de>  Sat, 09 Jan 2010 15:58:32 +0100
 
 libfso-glib (0.2.1+git20091114-1) unstable; urgency=low
 
-  * new upstream snapshot
+  * New upstream snapshot
 
  -- Heiko Stuebner <heiko@sntech.de>  Sun, 15 Nov 2009 21:38:12 +0100
 
