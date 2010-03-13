@@ -1,3 +1,10 @@
+libfso-glib (0.2.1+git20100304-1) unstable; urgency=low
+
+  * New upstream snapshot
+  * Bump standards to 3.8.4
+
+ -- Heiko Stuebner <heiko@sntech.de>  Sat, 12 Mar 2010 13:56:32 +0100
+
 libfso-glib (0.2.1+git20100102-1) unstable; urgency=low
 
   * New upstream snapshot
