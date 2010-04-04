@@ -73,12 +73,10 @@ am__installdirs = "$(DESTDIR)$(libdir)" "$(DESTDIR)$(girdir)" \
 	"$(DESTDIR)$(libfso_glibdir)"
 LTLIBRARIES = $(lib_LTLIBRARIES)
 am__DEPENDENCIES_1 =
-libfso_glib_la_DEPENDENCIES = $(am__DEPENDENCIES_1) \
-	$(am__DEPENDENCIES_1)
+libfso_glib_la_DEPENDENCIES = $(am__DEPENDENCIES_1)
 am__objects_1 = freesmartphone.lo freesmartphone-data.lo \
 	freesmartphone-device.lo freesmartphone-gsm.lo \
-	freesmartphone-time.lo freesmartphone-pim.lo \
-	freesmartphone-utils.lo
+	freesmartphone-time.lo freesmartphone-pim.lo
 am_libfso_glib_la_OBJECTS = $(am__objects_1)
 libfso_glib_la_OBJECTS = $(am_libfso_glib_la_OBJECTS)
 AM_V_lt = $(am__v_lt_$(V))
@@ -131,11 +129,10 @@ CFLAGS = @CFLAGS@
 CPP = @CPP@
 CPPFLAGS = @CPPFLAGS@
 CYGPATH_W = @CYGPATH_W@
-DBUSBINDINGTOOL = @DBUSBINDINGTOOL@
-DBUS_CFLAGS = @DBUS_CFLAGS@
-DBUS_LIBS = @DBUS_LIBS@
 DEFS = @DEFS@
 DEPDIR = @DEPDIR@
+DEPS_CFLAGS = @DEPS_CFLAGS@
+DEPS_LIBS = @DEPS_LIBS@
 DSYMUTIL = @DSYMUTIL@
 DUMPBIN = @DUMPBIN@
 ECHO_C = @ECHO_C@
@@ -144,9 +141,8 @@ ECHO_T = @ECHO_T@
 EGREP = @EGREP@
 EXEEXT = @EXEEXT@
 FGREP = @FGREP@
+FSO_SPECS_DIR = @FSO_SPECS_DIR@
 GIR_COMPILER = @GIR_COMPILER@
-GLIB_CFLAGS = @GLIB_CFLAGS@
-GLIB_LIBS = @GLIB_LIBS@
 GREP = @GREP@
 INSTALL = @INSTALL@
 INSTALL_DATA = @INSTALL_DATA@
@@ -182,7 +178,8 @@ RANLIB = @RANLIB@
 SED = @SED@
 SET_MAKE = @SET_MAKE@
 SHELL = @SHELL@
-SPECS_PATH = @SPECS_PATH@
+SPECS_CFLAGS = @SPECS_CFLAGS@
+SPECS_LIBS = @SPECS_LIBS@
 STRIP = @STRIP@
 VALAC = @VALAC@
 VALA_CFLAGS = @VALA_CFLAGS@
@@ -244,8 +241,7 @@ top_builddir = @top_builddir@
 top_srcdir = @top_srcdir@
 AUTOMAKE_OPTIONS = 
 AM_CFLAGS = \
-	$(GLIB_CFLAGS) \
-	$(DBUS_CFLAGS) \
+	$(DEPS_CFLAGS) \
 	-include $(CONFIG_HEADER)
 
 VALACFLAGS = \
@@ -255,6 +251,12 @@ VALACFLAGS = \
 	--library fso-glib-1.0 \
 	--gir FreeSmartphone-1.0.gir
 
+DBUSBINDINGTOOLFLAGS = \
+	--api-path=$(FSO_SPECS_DIR) \
+	--directory=./ --strip-namespace=org \
+	--rename-namespace=freedesktop:FreeDesktop \
+	--rename-namespace=freesmartphone:FreeSmartphone
+
 BUILT_SOURCES = libfso_glib_la.vala.stamp
 lib_LTLIBRARIES = libfso-glib.la
 libfso_glib_la_VALASOURCES = \
@@ -263,16 +265,16 @@ libfso_glib_la_VALASOURCES = \
 	freesmartphone-device.vala \
 	freesmartphone-gsm.vala \
 	freesmartphone-time.vala \
-	freesmartphone-pim.vala \
-	freesmartphone-utils.vala
+	freesmartphone-pim.vala
 
 libfso_glibdir = $(includedir)/fso-glib
 libfso_glib_HEADERS = \
 	freesmartphone.h
 
 vapidir = $(datadir)/vala/vapi
-vapi_DATA = fso-glib-1.0.vapi \
-	    fso-glib-1.0.deps
+vapi_DATA = \
+	fso-glib-1.0.vapi \
+	fso-glib-1.0.deps
 
 girdir = $(datadir)/gir-1.0
 gir_DATA = FreeSmartphone-1.0.gir
@@ -282,8 +284,7 @@ libfso_glib_la_SOURCES = \
 @TYPELIB_TRUE@typelibdir = $(libdir)/girepository-1.0
 @TYPELIB_TRUE@typelib_DATA = FreeSmartphone-1.0.typelib
 libfso_glib_la_LIBADD = \
-	$(GLIB_LIBS) \
-	$(DBUS_LIBS)
+	$(DEPS_LIBS)
 
 EXTRA_DIST = \
 	$(libfso_glib_la_VALASOURCES) \
@@ -298,7 +299,7 @@ CLEANFILES = \
 	libfso_glib_la.vala.stamp
 
 DISTCLEANFILES = \
-		 Makefile.in 
+	Makefile.in
 
 all: $(BUILT_SOURCES)
 	$(MAKE) $(AM_MAKEFLAGS) all-am
@@ -380,7 +381,6 @@ distclean-compile:
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/freesmartphone-gsm.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/freesmartphone-pim.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/freesmartphone-time.Plo@am__quote@
-@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/freesmartphone-utils.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/freesmartphone.Plo@am__quote@
 
 .c.o:
@@ -710,9 +710,8 @@ libfso_glib_la.vala.stamp: gen-bindings $(libfso_glib_la_VALASOURCES)
 	$(VALAC) -C ${VALACFLAGS} --basedir . $(libfso_glib_la_VALASOURCES)
 	touch $@
 
-@GENERATE_BINDINGS_TRUE@gen-bindings:
-@GENERATE_BINDINGS_TRUE@	$(DBUSBINDINGTOOL) --api-path=$(SPECS_PATH) --directory=./ --strip-namespace=org --rename-namespace=freedesktop:FreeDesktop --rename-namespace=freesmartphone:FreeSmartphone
-@GENERATE_BINDINGS_FALSE@gen-bindings:
+gen-bindings:
+	vala-dbus-binding-tool $(DBUSBINDINGTOOLFLAGS)
 
 @TYPELIB_TRUE@FreeSmartphone-1.0.typelib:FreeSmartphone-1.0.gir
 @TYPELIB_TRUE@	$(GIR_COMPILER) --includedir /usr/share/gir-1.0/ FreeSmartphone-1.0.gir -o FreeSmartphone-1.0.typelib
