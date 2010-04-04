@@ -5,3 +5,5 @@ stamp-h1
 *.service
 *.vapi
 
+src/*.vala
+

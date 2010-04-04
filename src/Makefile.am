@@ -1,8 +1,7 @@
-AUTOMAKE_OPTIONS = 
+AUTOMAKE_OPTIONS =
 
 AM_CFLAGS = \
-	$(GLIB_CFLAGS) \
-	$(DBUS_CFLAGS) \
+	$(DEPS_CFLAGS) \
 	-include $(CONFIG_HEADER)
 
 VALACFLAGS = \
@@ -11,6 +10,12 @@ VALACFLAGS = \
 	--header freesmartphone.h \
 	--library fso-glib-1.0 \
 	--gir FreeSmartphone-1.0.gir
+
+DBUSBINDINGTOOLFLAGS = \
+	--api-path=$(FSO_SPECS_DIR) \
+	--directory=./ --strip-namespace=org \
+	--rename-namespace=freedesktop:FreeDesktop \
+	--rename-namespace=freesmartphone:FreeSmartphone
 
 BUILT_SOURCES = libfso_glib_la.vala.stamp
 
@@ -22,16 +27,16 @@ libfso_glib_la_VALASOURCES = \
 	freesmartphone-device.vala \
 	freesmartphone-gsm.vala \
 	freesmartphone-time.vala \
-	freesmartphone-pim.vala \
-	freesmartphone-utils.vala
+	freesmartphone-pim.vala
 
 libfso_glibdir = $(includedir)/fso-glib
 libfso_glib_HEADERS = \
 	freesmartphone.h
 
 vapidir = $(datadir)/vala/vapi
-vapi_DATA = fso-glib-1.0.vapi \
-	    fso-glib-1.0.deps
+vapi_DATA = \
+	fso-glib-1.0.vapi \
+	fso-glib-1.0.deps
 
 girdir = $(datadir)/gir-1.0
 gir_DATA = FreeSmartphone-1.0.gir
@@ -43,13 +48,8 @@ libfso_glib_la.vala.stamp: gen-bindings $(libfso_glib_la_VALASOURCES)
 	$(VALAC) -C ${VALACFLAGS} --basedir . $(libfso_glib_la_VALASOURCES)
 	touch $@
 
-if GENERATE_BINDINGS
 gen-bindings:
-	$(DBUSBINDINGTOOL) --api-path=$(SPECS_PATH) --directory=./ --strip-namespace=org --rename-namespace=freedesktop:FreeDesktop --rename-namespace=freesmartphone:FreeSmartphone
-else
-gen-bindings:
-	
-endif
+	vala-dbus-binding-tool $(DBUSBINDINGTOOLFLAGS)
 
 if TYPELIB
 typelibdir = $(libdir)/girepository-1.0
@@ -60,8 +60,7 @@ FreeSmartphone-1.0.typelib:FreeSmartphone-1.0.gir
 endif
 
 libfso_glib_la_LIBADD = \
-	$(GLIB_LIBS) \
-	$(DBUS_LIBS)
+	$(DEPS_LIBS)
 
 EXTRA_DIST = \
 	$(libfso_glib_la_VALASOURCES) \
@@ -76,5 +75,4 @@ CLEANFILES = \
 	libfso_glib_la.vala.stamp
 
 DISTCLEANFILES = \
-		 Makefile.in 
-
+	Makefile.in
