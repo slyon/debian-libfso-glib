@@ -3,7 +3,16 @@ Priority: extra
 Maintainer: Debian FreeSmartphone.Org Team <pkg-fso-maint@lists.alioth.debian.org>
 Uploaders: Heiko Stuebner <heiko@sntech.de>
 DM-Upload-Allowed: yes
-Build-Depends: debhelper (>= 7), cdbs, pkg-config, valac (>= 0.8.1), libvala-dev (>= 0.8.1), libglib2.0-dev, libdbus-1-dev, libdbus-glib-1-dev, vala-dbus-binding-tool (>= 0.1.6), fso-specs (>= 0+git20100508)
+Build-Depends: cdbs,
+               debhelper (>= 7),
+               libvala-dev (>= 0.8.1),
+               libglib2.0-dev,
+               libdbus-1-dev,
+               libdbus-glib-1-dev,
+               fso-specs (>= 2010.05.11.2)
+               pkg-config,
+               vala-dbus-binding-tool (>= 0.1.6),
+               valac (>= 0.8.1)
 Standards-Version: 3.8.4
 Section: libs
 Homepage: http://freesmartphone.org/
