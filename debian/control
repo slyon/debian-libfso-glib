@@ -9,7 +9,7 @@ Build-Depends: cdbs,
                libglib2.0-dev,
                libdbus-1-dev,
                libdbus-glib-1-dev,
-               fso-specs (>= 2010.05.11.2)
+               fso-specs (>= 2010.05.11.2),
                pkg-config,
                vala-dbus-binding-tool (>= 0.1.6),
                valac (>= 0.8.1)
