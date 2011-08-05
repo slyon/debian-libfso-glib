@@ -2,6 +2,17 @@
 
 include /usr/share/cdbs/1/rules/debhelper.mk
 include /usr/share/cdbs/1/class/autotools.mk
+include /usr/share/cdbs/1/rules/patchsys-quilt.mk
 
 DEB_DH_STRIP_ARGS := --dbg-package=libfso-glib-dbg
 DEB_INSTALL_DOCS_ALL =
+
+
+DEB_CONFIGURE_PREFIX=/usr
+DEB_CONFIGURE_SCRIPT := ./autogen.sh
+
+DEB_DESTDIR = $(CURDIR)/debian/tmp/
+
+clean::
+	rm -f config.guess config.sub Makefile.in aclocal.m4 compile config.h.in configure depcomp install-sh ltmain.sh missing src/Makefile.in
+
