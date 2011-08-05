@@ -1,1 +1,9 @@
 GLib-based DBus bindings for freesmartphone.org - Vala implementation
+
+We provide two variants you, dbus-glib and gdbus.
+
+The default version (without --gdbus) compiles the bindings against
+libdbus and libdbus-glib.
+
+If you supply --gdbus, the bindings are compiled against
+glib. You will need at least version 2.26.1 for this to work.
