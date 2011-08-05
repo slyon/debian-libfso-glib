@@ -6,10 +6,8 @@ AM_CFLAGS = \
 
 VALACFLAGS = \
 	--pkg gio-2.0 \
-	--pkg dbus-glib-1 \
 	--header freesmartphone.h \
-	--library fso-glib-1.0 \
-	--gir FreeSmartphone-1.0.gir
+	--library fso-glib-1.0
 
 DBUSBINDINGTOOLFLAGS = \
 	--api-path=$(FSO_SPECS_DIR) \
@@ -17,17 +15,32 @@ DBUSBINDINGTOOLFLAGS = \
 	--rename-namespace=freedesktop:FreeDesktop \
 	--rename-namespace=freesmartphone:FreeSmartphone
 
+if WANT_GDBUS
+DBUSBINDINGTOOLFLAGS += --gdbus
+else
+VALACFLAGS += --pkg dbus-glib-1
+endif
+
 BUILT_SOURCES = libfso_glib_la.vala.stamp
 
 lib_LTLIBRARIES = libfso-glib.la
 
 libfso_glib_la_VALASOURCES = \
 	freesmartphone.vala \
+	freesmartphone-context.vala \
 	freesmartphone-data.vala \
 	freesmartphone-device.vala \
 	freesmartphone-gsm.vala \
 	freesmartphone-time.vala \
-	freesmartphone-pim.vala
+	freesmartphone-pim.vala \
+	freesmartphone-audio.vala \
+	freesmartphone-application.vala \
+	\
+	sflphone-sflphone.vala \
+	\
+	net-connman.vala \
+	\
+	bluez.vala
 
 libfso_glibdir = $(includedir)/fso-glib
 libfso_glib_HEADERS = \
@@ -37,9 +50,6 @@ vapidir = $(datadir)/vala/vapi
 vapi_DATA = \
 	fso-glib-1.0.vapi \
 	fso-glib-1.0.deps
-
-girdir = $(datadir)/gir-1.0
-gir_DATA = FreeSmartphone-1.0.gir
 
 libfso_glib_la_SOURCES = \
 	$(libfso_glib_la_VALASOURCES:.vala=.c)
@@ -52,8 +62,11 @@ gen-bindings:
 	vala-dbus-binding-tool $(DBUSBINDINGTOOLFLAGS)
 
 if TYPELIB
+girdir = $(datadir)/gir-1.0
+gir_DATA = FreeSmartphone-1.0.gir
 typelibdir = $(libdir)/girepository-1.0
 typelib_DATA = FreeSmartphone-1.0.typelib
+VALACFLAGS += --gir FreeSmartphone-1.0.gir
 
 FreeSmartphone-1.0.typelib:FreeSmartphone-1.0.gir
 	$(GIR_COMPILER) --includedir /usr/share/gir-1.0/ FreeSmartphone-1.0.gir -o FreeSmartphone-1.0.typelib
