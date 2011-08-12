@@ -5,6 +5,7 @@ Uploaders: Heiko Stuebner <heiko@sntech.de>, Rico Rommel <rico@bierrommel.de>
 DM-Upload-Allowed: yes
 Build-Depends: cdbs,
                debhelper (>= 7),
+               dh-autoreconf,
                libvala-0.12-dev,
                libglib2.0-dev (>=2.26.0),
                libdbus-1-dev,
@@ -13,9 +14,6 @@ Build-Depends: cdbs,
                pkg-config,
                vala-dbus-binding-tool (>= 0.3.3+git20110411),
                valac-0.12,
-               automake,
-               libtool,
-               autoconf,
                quilt
 Standards-Version: 3.9.2
 Section: libs
