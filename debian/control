@@ -41,7 +41,6 @@ Package: libfso-glib-dbg
 Architecture: any
 Section: debug
 Depends: ${misc:Depends}, libfso-glib0 (= ${binary:Version})
-Priority: extra
 Description: debugging symbols for use with libfso-glib
  freesmartphone.org GLib-based DBus bindings
  .
