@@ -1,7 +1,7 @@
 Source: libfso-glib
 Priority: extra
 Maintainer: Debian FreeSmartphone.Org Team <pkg-fso-maint@lists.alioth.debian.org>
-Uploaders: Heiko Stuebner <heiko@sntech.de>, Rico Rommel <rico@bierrommel.de>
+Uploaders: Heiko Stuebner <heiko@sntech.de>, Rico Rommel <rico@bierrommel.de>, Sebastian Reichel <sre@debian.org>
 DM-Upload-Allowed: yes
 Build-Depends: cdbs,
                debhelper (>= 7),

@@ -1,12 +1,17 @@
 libfso-glib (2011.06.01.1) unstable; urgency=low
 
+  [ Rico Rommel ]
   * new upstream snapshot
   * bump standards to 3.9.2
   * some build cleanups
   * remove .la from libfso-glib-dev
   * add Rico Rommel <rico@bierrommel.de> to uploaders
 
- -- Rico Rommel <rico@bierrommel.de>  Fri, 05 Aug 2011 12:15:09 +0200
+  [ Sebastian Reichel ]
+  * add me to uploaders
+  * acknowledge NMU uploads (Closes: #631766)
+
+ -- Sebastian Reichel <sre@debian.org>  Sat, 20 Aug 2011 10:07:48 +0200
 
 libfso-glib (2010.05.11.2-1.2) unstable; urgency=low
 
