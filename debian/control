@@ -22,7 +22,6 @@ Vcs-Git: git://git.debian.org/git/pkg-fso/libfso-glib.git
 Vcs-Browser: http://git.debian.org/?p=pkg-fso/libfso-glib.git;a=summary
 
 Package: libfso-glib0
-Section: libs
 Architecture: any
 Depends: ${shlibs:Depends}, ${misc:Depends}
 Description: freesmartphone.org GLib-based DBus bindings
