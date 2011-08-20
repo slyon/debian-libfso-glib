@@ -4,7 +4,7 @@ Maintainer: Debian FreeSmartphone.Org Team <pkg-fso-maint@lists.alioth.debian.or
 Uploaders: Heiko Stuebner <heiko@sntech.de>, Rico Rommel <rico@bierrommel.de>, Sebastian Reichel <sre@debian.org>
 DM-Upload-Allowed: yes
 Build-Depends: cdbs,
-               debhelper (>= 7),
+               debhelper (>= 8.1.3),
                dh-autoreconf,
                fso-specs (>= 2011.06.01.1),
                libvala-0.12-dev,
@@ -23,7 +23,9 @@ Vcs-Browser: http://git.debian.org/?p=pkg-fso/libfso-glib.git;a=summary
 
 Package: libfso-glib0
 Architecture: any
+Pre-Depends: ${misc:Pre-Depends}
 Depends: ${shlibs:Depends}, ${misc:Depends}
+Multi-Arch: same
 Description: freesmartphone.org GLib-based DBus bindings
  This package is part of the freesmartphone.org software stack
  and is targeted for smartphones.
@@ -40,6 +42,7 @@ Description: Development files for libfso-glib
 Package: libfso-glib-dbg
 Architecture: any
 Section: debug
+Pre-Depends: ${misc:Pre-Depends}
 Depends: ${misc:Depends}, libfso-glib0 (= ${binary:Version})
 Description: debugging symbols for use with libfso-glib
  freesmartphone.org GLib-based DBus bindings

@@ -10,6 +10,7 @@ libfso-glib (2011.06.01.1) unstable; urgency=low
   [ Sebastian Reichel ]
   * add me to uploaders
   * acknowledge NMU uploads (Closes: #631766)
+  * add multi-arch support
 
  -- Sebastian Reichel <sre@debian.org>  Sat, 20 Aug 2011 10:07:48 +0200
 
