@@ -12,6 +12,7 @@ libfso-glib (2011.06.01.1) unstable; urgency=low
   * acknowledge NMU uploads (Closes: #631766)
   * add multi-arch support
   * switch from cdbs to debhelper
+  * update copyright and switch to DEP5 format
 
  -- Sebastian Reichel <sre@debian.org>  Sat, 20 Aug 2011 10:07:48 +0200
 
