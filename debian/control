@@ -26,17 +26,22 @@ Pre-Depends: ${misc:Pre-Depends}
 Depends: ${shlibs:Depends}, ${misc:Depends}
 Multi-Arch: same
 Description: freesmartphone.org GLib-based DBus bindings
- This package is part of the freesmartphone.org software stack
- and is targeted for smartphones.
+ This package is part of the freesmartphone.org software stack and is targeted
+ for smartphones.
+ .
+ The library offers C functions for all DBus methods specified in fso-specs.
 
 Package: libfso-glib-dev
 Section: libdevel
 Architecture: any
 Depends: libfso-glib0 (= ${binary:Version}), ${misc:Depends}, libdbus-1-dev, libdbus-glib-1-dev
 Description: Development files for libfso-glib
- freesmartphone.org GLib-based DBus bindings
+ This package is part of the freesmartphone.org software stack and is targeted
+ for smartphones.
  .
- Development files.
+ The library offers C functions for all DBus methods specified in fso-specs.
+ .
+ This package contains the development files for the library.
 
 Package: libfso-glib-dbg
 Architecture: any
@@ -44,7 +49,10 @@ Section: debug
 Pre-Depends: ${misc:Pre-Depends}
 Depends: ${misc:Depends}, libfso-glib0 (= ${binary:Version})
 Description: debugging symbols for use with libfso-glib
- freesmartphone.org GLib-based DBus bindings
+ This package is part of the freesmartphone.org software stack and is targeted
+ for smartphones.
+ .
+ The library offers C functions for all DBus methods specified in fso-specs.
  .
  This package contains unstripped shared libraries. It is provided primarily
  to provide a backtrace with names in a debugger, this makes it somewhat easier
