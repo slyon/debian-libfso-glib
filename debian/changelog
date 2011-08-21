@@ -14,6 +14,7 @@ libfso-glib (2011.06.01.1-1) unstable; urgency=low
   * switch from cdbs to debhelper
   * update copyright and switch to DEP5 format
   * add initial *.symbols file
+  * add debian/watch file
 
  -- Sebastian Reichel <sre@debian.org>  Sun, 21 Aug 2011 09:19:26 +0200
 
