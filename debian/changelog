@@ -13,8 +13,9 @@ libfso-glib (2011.06.01.1-1) unstable; urgency=low
   * add multi-arch support
   * switch from cdbs to debhelper
   * update copyright and switch to DEP5 format
+  * add initial *.symbols file
 
- -- Sebastian Reichel <sre@debian.org>  Sat, 20 Aug 2011 10:07:48 +0200
+ -- Sebastian Reichel <sre@debian.org>  Sun, 21 Aug 2011 09:19:26 +0200
 
 libfso-glib (2010.05.11.2-1.2) unstable; urgency=low
 
