@@ -1,3 +1,6 @@
+Description: Fix cleanup rule in Makefile
+ also remove generated vala files
+Author: Rico Rommel <rico@bierrommel.de>
 --- a/src/Makefile.am
 +++ b/src/Makefile.am
 @@ -88,4 +88,6 @@
