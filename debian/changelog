@@ -1,3 +1,10 @@
+libfso-glib (2011.06.01.1-2) UNRELEASED; urgency=low
+
+  * drop libdbus-dev and libdbus-glib-dev from build depends
+    (upstream switched to gdbus)
+
+ -- Sebastian Reichel <sre@debian.org>  Mon, 22 Aug 2011 18:26:16 +0200
+
 libfso-glib (2011.06.01.1-1) unstable; urgency=low
 
   [ Rico Rommel ]
