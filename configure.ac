@@ -1,4 +1,4 @@
-AC_INIT([libfso-glib], [2011.06.01.1], [smartphones-standards@linuxtogo.org], [libfso-glib])
+AC_INIT([libfso-glib], [2012.02.16.1], [smartphones-standards@linuxtogo.org], [libfso-glib])
 AC_CONFIG_SRCDIR([src/Makefile.am])
 AC_CONFIG_HEADERS(config.h)
 AM_INIT_AUTOMAKE([dist-bzip2])
@@ -9,7 +9,7 @@ AM_PROG_CC_C_O
 AC_DISABLE_STATIC
 AC_PROG_LIBTOOL
 
-VALA_REQUIRED=0.9.7
+VALA_REQUIRED=0.14.2
 AC_PATH_PROG(VALAC, valac, valac)
 AC_SUBST(VALAC)
 m4_ifdef([AM_PROG_VALAC], [AM_PROG_VALAC([$VALA_REQUIRED])])
@@ -74,20 +74,26 @@ AM_CONDITIONAL( [WANT_GDBUS], [test x"$gdbus" = x"yes"])
 AC_SUBST(DEPS_CFLAGS)
 AC_SUBST(DEPS_LIBS)
 
+##############################################################################
+# check for debugging
+AC_ARG_ENABLE(debug,
+  [  --enable-debug            Enable debug build (default=disabled)],
+  [debug=$enableval],
+  [debug="no"])
+AM_CONDITIONAL( [WANT_DEBUG], [test x"$debug" = x"yes"])
+
 AC_CONFIG_FILES([
 	Makefile
 	src/Makefile
 	fso-glib-1.0.pc
 ])
 AC_OUTPUT
-#
-# Info
-#
-echo
-echo
+
+##############################################################################
+# info
 echo
 echo "------------------------------------------------------------------------"
-echo "$PACKAGE_NAME $PACKAGE_VERSION-$GITV"
+echo "$PACKAGE_NAME $PACKAGE_VERSION"
 echo "------------------------------------------------------------------------"
 echo
 echo "Configuration Options:"
