@@ -86,4 +86,6 @@ CLEANFILES = \
 	libfso_glib_la.vala.stamp
 
 DISTCLEANFILES = \
-	Makefile.in
+	Makefile.in \
+	$(libfso_glib_la_VALASOURCES) \
+	freedesktop-gypsy.vala
