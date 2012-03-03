@@ -21,6 +21,11 @@ else
 VALACFLAGS += --pkg dbus-glib-1
 endif
 
+if WANT_DEBUG
+VALACFLAGS += -g -D DEBUG
+AM_CFLAGS += -ggdb -O0
+endif
+
 BUILT_SOURCES = libfso_glib_la.vala.stamp
 
 lib_LTLIBRARIES = libfso-glib.la
@@ -33,14 +38,7 @@ libfso_glib_la_VALASOURCES = \
 	freesmartphone-gsm.vala \
 	freesmartphone-time.vala \
 	freesmartphone-pim.vala \
-	freesmartphone-audio.vala \
-	freesmartphone-application.vala \
-	\
-	sflphone-sflphone.vala \
-	\
-	net-connman.vala \
-	\
-	bluez.vala
+	freesmartphone-audio.vala
 
 libfso_glibdir = $(includedir)/fso-glib
 libfso_glib_HEADERS = \
