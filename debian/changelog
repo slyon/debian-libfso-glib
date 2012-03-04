@@ -3,6 +3,7 @@ libfso-glib (2012.02.16.1-1) UNRELEASED; urgency=low
   * new upstream snapshot
   * bump standards to 3.9.2
   * update vala build depends to 0.14
+  * rename package due to removed interfaces in fso-specs
 
  -- Rico Rommel <rico@bierrommel.de>  Sat, 03 Mar 2012 23:27:21 +0100
 

@@ -18,10 +18,11 @@ Homepage: http://freesmartphone.org/
 Vcs-Git: git://git.debian.org/git/pkg-fso/libfso-glib.git
 Vcs-Browser: http://git.debian.org/?p=pkg-fso/libfso-glib.git;a=summary
 
-Package: libfso-glib0
+Package: libfso-glib1
 Architecture: any
 Pre-Depends: ${misc:Pre-Depends}
 Depends: ${shlibs:Depends}, ${misc:Depends}
+Conflicts: libfso-glib0
 Multi-Arch: same
 Description: freesmartphone.org GLib-based DBus bindings
  This package is part of the freesmartphone.org software stack and is targeted
@@ -32,7 +33,7 @@ Description: freesmartphone.org GLib-based DBus bindings
 Package: libfso-glib-dev
 Section: libdevel
 Architecture: any
-Depends: libfso-glib0 (= ${binary:Version}), ${misc:Depends}, libdbus-1-dev, libdbus-glib-1-dev
+Depends: libfso-glib1 (= ${binary:Version}), ${misc:Depends}, libdbus-1-dev, libdbus-glib-1-dev
 Description: Development files for libfso-glib
  This package is part of the freesmartphone.org software stack and is targeted
  for smartphones.
@@ -45,7 +46,7 @@ Package: libfso-glib-dbg
 Architecture: any
 Section: debug
 Pre-Depends: ${misc:Pre-Depends}
-Depends: ${misc:Depends}, libfso-glib0 (= ${binary:Version})
+Depends: ${misc:Depends}, libfso-glib1 (= ${binary:Version})
 Description: debugging symbols for use with libfso-glib
  This package is part of the freesmartphone.org software stack and is targeted
  for smartphones.
