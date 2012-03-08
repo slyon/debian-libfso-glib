@@ -1,4 +1,4 @@
-libfso-glib (2012.02.16.1-1) UNRELEASED; urgency=low
+libfso-glib (2012.02.16.1-1) unstable; urgency=low
 
   * new upstream snapshot
   * bump standards to 3.9.2
