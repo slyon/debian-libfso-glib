@@ -1,6 +1,6 @@
 Format: http://anonscm.debian.org/viewvc/dep/web/deps/dep5.mdwn?revision=174
-Name: libfso-glib
-Maintainer: Heiko Stuebner <heiko@sntech.de>
+Upstream-Name: libfso-glib
+Upstream-Contact: Heiko Stuebner <heiko@sntech.de>
 Source: http://www.freesmartphone.org
 
 Files: *
