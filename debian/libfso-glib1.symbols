@@ -1,4 +1,4 @@
-libfso-glib.so.0 libfso-glib1 #MINVER#
+libfso-glib.so.1 libfso-glib1 #MINVER#
  free_smartphone_audio_control_from_string@Base 2012.02.16.1
  free_smartphone_audio_control_get_type@Base 2012.02.16.1
  free_smartphone_audio_control_to_string@Base 2012.02.16.1

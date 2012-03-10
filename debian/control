@@ -22,7 +22,6 @@ Package: libfso-glib1
 Architecture: any
 Pre-Depends: ${misc:Pre-Depends}
 Depends: ${shlibs:Depends}, ${misc:Depends}
-Conflicts: libfso-glib0
 Multi-Arch: same
 Description: freesmartphone.org GLib-based DBus bindings
  This package is part of the freesmartphone.org software stack and is targeted
