@@ -1,3 +1,11 @@
+libfso-glib (2012.04.18.1-1) unstable; urgency=low
+
+  * Import upstream release 2012.04.18.1
+  * build from vala source instead from precompiled c sources
+  * removed clean-vala-sources.patch
+
+ -- Simon Busch <morphis@gravedo.de>  Wed, 16 May 2012 08:33:11 +0200
+
 libfso-glib (2012.02.16.1-1) unstable; urgency=low
 
   [Rico Rommel]
