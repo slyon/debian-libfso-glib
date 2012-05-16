@@ -1,2 +1,2 @@
 version=3
-http://downloads.freesmartphone.org/ libfso-glib-([0-9\.]+)\.tar\.bz2
+http://downloads.freesmartphone.org/sources/libfso-glib/([0-9\.]+)/libfso-glib-([0-9\.]+)\.tar\.bz2
