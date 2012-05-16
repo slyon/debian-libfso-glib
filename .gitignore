@@ -1,9 +1,0 @@
-autom4te.cache
-ylwrap
-stamp-h1
-*.pc
-*.service
-*.vapi
-
-src/*.vala
-
