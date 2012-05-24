@@ -193,6 +193,8 @@ namespace FreeSmartphone {
 			public abstract async FreeSmartphone.Data.WorldConnectivityAccessPoint[] get_apns_for_mcc_mnc (string mcc_mnc) throws FreeSmartphone.Error, GLib.DBusError, GLib.IOError;
 			[DBus (name = "GetCountryCodeForMccMnc")]
 			public abstract async string get_country_code_for_mcc_mnc (string mcc_mnc) throws FreeSmartphone.Error, GLib.DBusError, GLib.IOError;
+			[DBus (name = "GetProviderNameForMccMnc")]
+			public abstract async string get_provider_name_for_mcc_mnc (string mcc_mnc) throws FreeSmartphone.Error, GLib.DBusError, GLib.IOError;
 			[DBus (name = "GetTimezonesForCountryCode")]
 			public abstract async GLib.HashTable<string,string> get_timezones_for_country_code (string country_code) throws FreeSmartphone.Error, GLib.DBusError, GLib.IOError;
 		}
@@ -205,6 +207,8 @@ namespace FreeSmartphone {
 			public abstract FreeSmartphone.Data.WorldConnectivityAccessPoint[] get_apns_for_mcc_mnc (string mcc_mnc) throws FreeSmartphone.Error, GLib.DBusError, GLib.IOError;
 			[DBus (name = "GetCountryCodeForMccMnc")]
 			public abstract string get_country_code_for_mcc_mnc (string mcc_mnc) throws FreeSmartphone.Error, GLib.DBusError, GLib.IOError;
+			[DBus (name = "GetProviderNameForMccMnc")]
+			public abstract string get_provider_name_for_mcc_mnc (string mcc_mnc) throws FreeSmartphone.Error, GLib.DBusError, GLib.IOError;
 			[DBus (name = "GetTimezonesForCountryCode")]
 			public abstract GLib.HashTable<string,string> get_timezones_for_country_code (string country_code) throws FreeSmartphone.Error, GLib.DBusError, GLib.IOError;
 		}
