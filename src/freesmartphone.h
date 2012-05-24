@@ -1679,6 +1679,8 @@ struct _FreeSmartphoneDataWorldIface {
 	GHashTable* (*get_timezones_for_country_code_finish) (FreeSmartphoneDataWorld* self, GAsyncResult* _res_, GError** error);
 	void (*get_apns_for_mcc_mnc) (FreeSmartphoneDataWorld* self, const gchar* mcc_mnc, GAsyncReadyCallback _callback_, gpointer _user_data_);
 	FreeSmartphoneDataWorldConnectivityAccessPoint* (*get_apns_for_mcc_mnc_finish) (FreeSmartphoneDataWorld* self, GAsyncResult* _res_, int* result_length1, GError** error);
+	void (*get_provider_name_for_mcc_mnc) (FreeSmartphoneDataWorld* self, const gchar* mcc_mnc, GAsyncReadyCallback _callback_, gpointer _user_data_);
+	gchar* (*get_provider_name_for_mcc_mnc_finish) (FreeSmartphoneDataWorld* self, GAsyncResult* _res_, GError** error);
 };
 
 struct _FreeSmartphoneDataWorldSyncIface {
@@ -1687,6 +1689,7 @@ struct _FreeSmartphoneDataWorldSyncIface {
 	gchar* (*get_country_code_for_mcc_mnc) (FreeSmartphoneDataWorldSync* self, const gchar* mcc_mnc, GError** error);
 	GHashTable* (*get_timezones_for_country_code) (FreeSmartphoneDataWorldSync* self, const gchar* country_code, GError** error);
 	FreeSmartphoneDataWorldConnectivityAccessPoint* (*get_apns_for_mcc_mnc) (FreeSmartphoneDataWorldSync* self, const gchar* mcc_mnc, int* result_length1, GError** error);
+	gchar* (*get_provider_name_for_mcc_mnc) (FreeSmartphoneDataWorldSync* self, const gchar* mcc_mnc, GError** error);
 };
 
 typedef enum  {
@@ -3271,6 +3274,8 @@ void free_smartphone_data_world_get_timezones_for_country_code (FreeSmartphoneDa
 GHashTable* free_smartphone_data_world_get_timezones_for_country_code_finish (FreeSmartphoneDataWorld* self, GAsyncResult* _res_, GError** error);
 void free_smartphone_data_world_get_apns_for_mcc_mnc (FreeSmartphoneDataWorld* self, const gchar* mcc_mnc, GAsyncReadyCallback _callback_, gpointer _user_data_);
 FreeSmartphoneDataWorldConnectivityAccessPoint* free_smartphone_data_world_get_apns_for_mcc_mnc_finish (FreeSmartphoneDataWorld* self, GAsyncResult* _res_, int* result_length1, GError** error);
+void free_smartphone_data_world_get_provider_name_for_mcc_mnc (FreeSmartphoneDataWorld* self, const gchar* mcc_mnc, GAsyncReadyCallback _callback_, gpointer _user_data_);
+gchar* free_smartphone_data_world_get_provider_name_for_mcc_mnc_finish (FreeSmartphoneDataWorld* self, GAsyncResult* _res_, GError** error);
 GType free_smartphone_data_world_sync_proxy_get_type (void) G_GNUC_CONST;
 guint free_smartphone_data_world_sync_register_object (void* object, GDBusConnection* connection, const gchar* path, GError** error);
 GType free_smartphone_data_world_sync_get_type (void) G_GNUC_CONST;
@@ -3278,6 +3283,7 @@ FreeSmartphoneDataWorldCountry* free_smartphone_data_world_sync_get_all_countrie
 gchar* free_smartphone_data_world_sync_get_country_code_for_mcc_mnc (FreeSmartphoneDataWorldSync* self, const gchar* mcc_mnc, GError** error);
 GHashTable* free_smartphone_data_world_sync_get_timezones_for_country_code (FreeSmartphoneDataWorldSync* self, const gchar* country_code, GError** error);
 FreeSmartphoneDataWorldConnectivityAccessPoint* free_smartphone_data_world_sync_get_apns_for_mcc_mnc (FreeSmartphoneDataWorldSync* self, const gchar* mcc_mnc, int* result_length1, GError** error);
+gchar* free_smartphone_data_world_sync_get_provider_name_for_mcc_mnc (FreeSmartphoneDataWorldSync* self, const gchar* mcc_mnc, GError** error);
 void free_smartphone_data_world_connectivity_access_point_init (FreeSmartphoneDataWorldConnectivityAccessPoint *self, const gchar* description, const gchar* apn, const gchar* username, const gchar* password, const gchar* dns1, const gchar* dns2);
 void free_smartphone_data_world_connectivity_access_point_from_variant (GVariant* v, FreeSmartphoneDataWorldConnectivityAccessPoint* result);
 GType free_smartphone_device_idle_notifier_proxy_get_type (void) G_GNUC_CONST;

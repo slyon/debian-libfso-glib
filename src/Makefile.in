@@ -15,6 +15,8 @@
 
 @SET_MAKE@
 
+# GLIB - Library of useful C routines
+
 
 
 VPATH = @srcdir@
@@ -36,14 +38,19 @@ PRE_UNINSTALL = :
 POST_UNINSTALL = :
 build_triplet = @build@
 host_triplet = @host@
+DIST_COMMON = $(libfso_glib_HEADERS) $(srcdir)/Makefile.am \
+	$(srcdir)/Makefile.in $(top_srcdir)/Makefile.decl \
+	freesmartphone-audio.c freesmartphone-context.c \
+	freesmartphone-data.c freesmartphone-device.c \
+	freesmartphone-gsm.c freesmartphone-pim.c \
+	freesmartphone-time.c freesmartphone.c freesmartphone.h \
+	libfso_glib_la_vala.stamp
 @WANT_GDBUS_TRUE@am__append_1 = --gdbus
 @WANT_GDBUS_FALSE@am__append_2 = --pkg dbus-glib-1
 @WANT_DEBUG_TRUE@am__append_3 = -g -D DEBUG
 @WANT_DEBUG_TRUE@am__append_4 = -ggdb -O0
 @TYPELIB_TRUE@am__append_5 = --gir FreeSmartphone-1.0.gir
 subdir = src
-DIST_COMMON = $(libfso_glib_HEADERS) $(srcdir)/Makefile.am \
-	$(srcdir)/Makefile.in
 ACLOCAL_M4 = $(top_srcdir)/aclocal.m4
 am__aclocal_m4_deps = $(top_srcdir)/configure.ac
 am__configure_deps = $(am__aclocal_m4_deps) $(CONFIGURE_DEPENDENCIES) \
@@ -85,15 +92,23 @@ am__installdirs = "$(DESTDIR)$(libdir)" "$(DESTDIR)$(girdir)" \
 LTLIBRARIES = $(lib_LTLIBRARIES)
 am__DEPENDENCIES_1 =
 libfso_glib_la_DEPENDENCIES = $(am__DEPENDENCIES_1)
-am__objects_1 = freesmartphone.lo freesmartphone-context.lo \
-	freesmartphone-data.lo freesmartphone-device.lo \
-	freesmartphone-gsm.lo freesmartphone-time.lo \
-	freesmartphone-pim.lo freesmartphone-audio.lo
-am_libfso_glib_la_OBJECTS = $(am__objects_1)
+am__objects_1 =
+am_libfso_glib_la_OBJECTS = libfso_glib_la-freesmartphone.lo \
+	libfso_glib_la-freesmartphone-context.lo \
+	libfso_glib_la-freesmartphone-data.lo \
+	libfso_glib_la-freesmartphone-device.lo \
+	libfso_glib_la-freesmartphone-gsm.lo \
+	libfso_glib_la-freesmartphone-time.lo \
+	libfso_glib_la-freesmartphone-pim.lo \
+	libfso_glib_la-freesmartphone-audio.lo $(am__objects_1)
 libfso_glib_la_OBJECTS = $(am_libfso_glib_la_OBJECTS)
 AM_V_lt = $(am__v_lt_@AM_V@)
 am__v_lt_ = $(am__v_lt_@AM_DEFAULT_V@)
 am__v_lt_0 = --silent
+libfso_glib_la_LINK = $(LIBTOOL) $(AM_V_lt) --tag=CC \
+	$(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=link $(CCLD) \
+	$(libfso_glib_la_CFLAGS) $(CFLAGS) $(libfso_glib_la_LDFLAGS) \
+	$(LDFLAGS) -o $@
 DEFAULT_INCLUDES = -I.@am__isrc@ -I$(top_builddir)
 depcomp = $(SHELL) $(top_srcdir)/depcomp
 am__depfiles_maybe = depfiles
@@ -117,6 +132,13 @@ LINK = $(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) \
 AM_V_CCLD = $(am__v_CCLD_@AM_V@)
 am__v_CCLD_ = $(am__v_CCLD_@AM_DEFAULT_V@)
 am__v_CCLD_0 = @echo "  CCLD  " $@;
+VALACOMPILE = $(VALAC) $(AM_VALAFLAGS) $(VALAFLAGS)
+LTVALACOMPILE = $(LIBTOOL) $(AM_V_lt) $(AM_LIBTOOLFLAGS) \
+	$(LIBTOOLFLAGS) --mode=compile $(VALAC) $(AM_VALAFLAGS) \
+	$(VALAFLAGS)
+AM_V_VALAC = $(am__v_VALAC_@AM_V@)
+am__v_VALAC_ = $(am__v_VALAC_@AM_DEFAULT_V@)
+am__v_VALAC_0 = @echo "  VALAC " $@;
 AM_V_GEN = $(am__v_GEN_@AM_V@)
 am__v_GEN_ = $(am__v_GEN_@AM_DEFAULT_V@)
 am__v_GEN_0 = @echo "  GEN   " $@;
@@ -170,6 +192,10 @@ LIBTOOL = @LIBTOOL@
 LIPO = @LIPO@
 LN_S = @LN_S@
 LTLIBOBJS = @LTLIBOBJS@
+LT_AGE = @LT_AGE@
+LT_CURRENT = @LT_CURRENT@
+LT_REVISION = @LT_REVISION@
+MAINT = @MAINT@
 MAKEINFO = @MAKEINFO@
 MANIFEST_TOOL = @MANIFEST_TOOL@
 MKDIR_P = @MKDIR_P@
@@ -253,18 +279,23 @@ target_alias = @target_alias@
 top_build_prefix = @top_build_prefix@
 top_builddir = @top_builddir@
 top_srcdir = @top_srcdir@
+GTESTER = gtester
+GTESTER_REPORT = gtester-report
+
+# initialize variables for unconditional += appending
+EXTRA_DIST = fso-glib-1.0.deps fso-glib-1.0.vapi $(NULL)
+TEST_PROGS = 
 AUTOMAKE_OPTIONS = 
-AM_CFLAGS = $(DEPS_CFLAGS) -include $(CONFIG_HEADER) $(am__append_4)
-VALACFLAGS = --pkg gio-2.0 --header freesmartphone.h --library \
-	fso-glib-1.0 $(am__append_2) $(am__append_3) $(am__append_5)
-DBUSBINDINGTOOLFLAGS = --api-path=$(FSO_SPECS_DIR) --directory=./ \
-	--strip-namespace=org \
+NULL = 
+AM_CFLAGS = -include $(CONFIG_HEADER) $(NULL) $(am__append_4)
+AM_VALAFLAGS = $(am__append_2) $(am__append_3) $(am__append_5)
+DBUSBINDINGTOOLFLAGS = --api-path=$(FSO_SPECS_DIR) \
+	--directory=$(top_builddir)/src --strip-namespace=org \
 	--rename-namespace=freedesktop:FreeDesktop \
-	--rename-namespace=freesmartphone:FreeSmartphone \
+	--rename-namespace=freesmartphone:FreeSmartphone $(NULL) \
 	$(am__append_1)
-BUILT_SOURCES = libfso_glib_la.vala.stamp
 lib_LTLIBRARIES = libfso-glib.la
-libfso_glib_la_VALASOURCES = \
+libfso_glib_la_SOURCES = \
 	freesmartphone.vala \
 	freesmartphone-context.vala \
 	freesmartphone-data.vala \
@@ -272,52 +303,53 @@ libfso_glib_la_VALASOURCES = \
 	freesmartphone-gsm.vala \
 	freesmartphone-time.vala \
 	freesmartphone-pim.vala \
-	freesmartphone-audio.vala
+	freesmartphone-audio.vala \
+	$(NULL)
+
+libfso_glib_la_VALAFLAGS = \
+	--basedir $(top_srcdir) \
+	--pkg gio-2.0 \
+	--header freesmartphone.h \
+	--library fso-glib-1.0 \
+	$(NULL)
+
+libfso_glib_la_CFLAGS = \
+	$(DEPS_CFLAGS) \
+	$(NULL)
+
+libfso_glib_la_LIBADD = \
+	$(DEPS_LIBS)
+
+libfso_glib_la_LDFLAGS = \
+	$(AM_LDFLAGS) \
+	-version-info "$(LT_CURRENT)":"$(LT_REVISION)":"$(LT_AGE)" \
+	$(NULL)
 
 libfso_glibdir = $(includedir)/fso-glib
 libfso_glib_HEADERS = \
-	freesmartphone.h
+	freesmartphone.h \
+	$(NULL)
 
 vapidir = $(datadir)/vala/vapi
 vapi_DATA = \
 	fso-glib-1.0.vapi \
-	fso-glib-1.0.deps
-
-libfso_glib_la_SOURCES = \
-	$(libfso_glib_la_VALASOURCES:.vala=.c)
+	fso-glib-1.0.deps \
+	$(NULL)
 
 @TYPELIB_TRUE@girdir = $(datadir)/gir-1.0
 @TYPELIB_TRUE@gir_DATA = FreeSmartphone-1.0.gir
 @TYPELIB_TRUE@typelibdir = $(libdir)/girepository-1.0
 @TYPELIB_TRUE@typelib_DATA = FreeSmartphone-1.0.typelib
-libfso_glib_la_LIBADD = \
-	$(DEPS_LIBS)
-
-EXTRA_DIST = \
-	$(libfso_glib_la_VALASOURCES) \
-	fso-glib-1.0.deps \
-	fso-glib-1.0.vapi \
-	libfso_glib_la.vala.stamp
-
-CLEANFILES = \
-	*.vala \
-	*.c \
-	*.h \
-	*.vapi \
-	*.gir \
-	*.typelib \
-	libfso_glib_la.vala.stamp
-
+CLEANFILES = 
 DISTCLEANFILES = \
-	$(CLEANFILES) \
-	Makefile.in
+	Makefile.in \
+	$(NULL)
 
-all: $(BUILT_SOURCES)
-	$(MAKE) $(AM_MAKEFLAGS) all-am
+all: all-am
 
 .SUFFIXES:
 .SUFFIXES: .c .lo .o .obj
-$(srcdir)/Makefile.in:  $(srcdir)/Makefile.am  $(am__configure_deps)
+$(srcdir)/Makefile.in: @MAINTAINER_MODE_TRUE@ $(srcdir)/Makefile.am $(top_srcdir)/Makefile.decl $(am__configure_deps)
 	@for dep in $?; do \
 	  case '$(am__configure_deps)' in \
 	    *$$dep*) \
@@ -338,13 +370,14 @@ Makefile: $(srcdir)/Makefile.in $(top_builddir)/config.status
 	    echo ' cd $(top_builddir) && $(SHELL) ./config.status $(subdir)/$@ $(am__depfiles_maybe)'; \
 	    cd $(top_builddir) && $(SHELL) ./config.status $(subdir)/$@ $(am__depfiles_maybe);; \
 	esac;
+$(top_srcdir)/Makefile.decl:
 
 $(top_builddir)/config.status: $(top_srcdir)/configure $(CONFIG_STATUS_DEPENDENCIES)
 	cd $(top_builddir) && $(MAKE) $(AM_MAKEFLAGS) am--refresh
 
-$(top_srcdir)/configure:  $(am__configure_deps)
+$(top_srcdir)/configure: @MAINTAINER_MODE_TRUE@ $(am__configure_deps)
 	cd $(top_builddir) && $(MAKE) $(AM_MAKEFLAGS) am--refresh
-$(ACLOCAL_M4):  $(am__aclocal_m4_deps)
+$(ACLOCAL_M4): @MAINTAINER_MODE_TRUE@ $(am__aclocal_m4_deps)
 	cd $(top_builddir) && $(MAKE) $(AM_MAKEFLAGS) am--refresh
 $(am__aclocal_m4_deps):
 install-libLTLIBRARIES: $(lib_LTLIBRARIES)
@@ -379,7 +412,7 @@ clean-libLTLIBRARIES:
 	  rm -f "$${dir}/so_locations"; \
 	done
 libfso-glib.la: $(libfso_glib_la_OBJECTS) $(libfso_glib_la_DEPENDENCIES) $(EXTRA_libfso_glib_la_DEPENDENCIES) 
-	$(AM_V_CCLD)$(LINK) -rpath $(libdir) $(libfso_glib_la_OBJECTS) $(libfso_glib_la_LIBADD) $(LIBS)
+	$(AM_V_CCLD)$(libfso_glib_la_LINK) -rpath $(libdir) $(libfso_glib_la_OBJECTS) $(libfso_glib_la_LIBADD) $(LIBS)
 
 mostlyclean-compile:
 	-rm -f *.$(OBJEXT)
@@ -387,14 +420,14 @@ mostlyclean-compile:
 distclean-compile:
 	-rm -f *.tab.c
 
-@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/freesmartphone-audio.Plo@am__quote@
-@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/freesmartphone-context.Plo@am__quote@
-@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/freesmartphone-data.Plo@am__quote@
-@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/freesmartphone-device.Plo@am__quote@
-@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/freesmartphone-gsm.Plo@am__quote@
-@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/freesmartphone-pim.Plo@am__quote@
-@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/freesmartphone-time.Plo@am__quote@
-@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/freesmartphone.Plo@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/libfso_glib_la-freesmartphone-audio.Plo@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/libfso_glib_la-freesmartphone-context.Plo@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/libfso_glib_la-freesmartphone-data.Plo@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/libfso_glib_la-freesmartphone-device.Plo@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/libfso_glib_la-freesmartphone-gsm.Plo@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/libfso_glib_la-freesmartphone-pim.Plo@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/libfso_glib_la-freesmartphone-time.Plo@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/libfso_glib_la-freesmartphone.Plo@am__quote@
 
 .c.o:
 @am__fastdepCC_TRUE@	$(AM_V_CC)$(COMPILE) -MT $@ -MD -MP -MF $(DEPDIR)/$*.Tpo -c -o $@ $<
@@ -416,6 +449,111 @@ distclean-compile:
 @AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='$<' object='$@' libtool=yes @AMDEPBACKSLASH@
 @AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
 @am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(LTCOMPILE) -c -o $@ $<
+
+libfso_glib_la-freesmartphone.lo: freesmartphone.c
+@am__fastdepCC_TRUE@	$(AM_V_CC)$(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(libfso_glib_la_CFLAGS) $(CFLAGS) -MT libfso_glib_la-freesmartphone.lo -MD -MP -MF $(DEPDIR)/libfso_glib_la-freesmartphone.Tpo -c -o libfso_glib_la-freesmartphone.lo `test -f 'freesmartphone.c' || echo '$(srcdir)/'`freesmartphone.c
+@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) $(DEPDIR)/libfso_glib_la-freesmartphone.Tpo $(DEPDIR)/libfso_glib_la-freesmartphone.Plo
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='freesmartphone.c' object='libfso_glib_la-freesmartphone.lo' libtool=yes @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(libfso_glib_la_CFLAGS) $(CFLAGS) -c -o libfso_glib_la-freesmartphone.lo `test -f 'freesmartphone.c' || echo '$(srcdir)/'`freesmartphone.c
+
+libfso_glib_la-freesmartphone-context.lo: freesmartphone-context.c
+@am__fastdepCC_TRUE@	$(AM_V_CC)$(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(libfso_glib_la_CFLAGS) $(CFLAGS) -MT libfso_glib_la-freesmartphone-context.lo -MD -MP -MF $(DEPDIR)/libfso_glib_la-freesmartphone-context.Tpo -c -o libfso_glib_la-freesmartphone-context.lo `test -f 'freesmartphone-context.c' || echo '$(srcdir)/'`freesmartphone-context.c
+@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) $(DEPDIR)/libfso_glib_la-freesmartphone-context.Tpo $(DEPDIR)/libfso_glib_la-freesmartphone-context.Plo
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='freesmartphone-context.c' object='libfso_glib_la-freesmartphone-context.lo' libtool=yes @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(libfso_glib_la_CFLAGS) $(CFLAGS) -c -o libfso_glib_la-freesmartphone-context.lo `test -f 'freesmartphone-context.c' || echo '$(srcdir)/'`freesmartphone-context.c
+
+libfso_glib_la-freesmartphone-data.lo: freesmartphone-data.c
+@am__fastdepCC_TRUE@	$(AM_V_CC)$(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(libfso_glib_la_CFLAGS) $(CFLAGS) -MT libfso_glib_la-freesmartphone-data.lo -MD -MP -MF $(DEPDIR)/libfso_glib_la-freesmartphone-data.Tpo -c -o libfso_glib_la-freesmartphone-data.lo `test -f 'freesmartphone-data.c' || echo '$(srcdir)/'`freesmartphone-data.c
+@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) $(DEPDIR)/libfso_glib_la-freesmartphone-data.Tpo $(DEPDIR)/libfso_glib_la-freesmartphone-data.Plo
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='freesmartphone-data.c' object='libfso_glib_la-freesmartphone-data.lo' libtool=yes @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(libfso_glib_la_CFLAGS) $(CFLAGS) -c -o libfso_glib_la-freesmartphone-data.lo `test -f 'freesmartphone-data.c' || echo '$(srcdir)/'`freesmartphone-data.c
+
+libfso_glib_la-freesmartphone-device.lo: freesmartphone-device.c
+@am__fastdepCC_TRUE@	$(AM_V_CC)$(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(libfso_glib_la_CFLAGS) $(CFLAGS) -MT libfso_glib_la-freesmartphone-device.lo -MD -MP -MF $(DEPDIR)/libfso_glib_la-freesmartphone-device.Tpo -c -o libfso_glib_la-freesmartphone-device.lo `test -f 'freesmartphone-device.c' || echo '$(srcdir)/'`freesmartphone-device.c
+@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) $(DEPDIR)/libfso_glib_la-freesmartphone-device.Tpo $(DEPDIR)/libfso_glib_la-freesmartphone-device.Plo
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='freesmartphone-device.c' object='libfso_glib_la-freesmartphone-device.lo' libtool=yes @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(libfso_glib_la_CFLAGS) $(CFLAGS) -c -o libfso_glib_la-freesmartphone-device.lo `test -f 'freesmartphone-device.c' || echo '$(srcdir)/'`freesmartphone-device.c
+
+libfso_glib_la-freesmartphone-gsm.lo: freesmartphone-gsm.c
+@am__fastdepCC_TRUE@	$(AM_V_CC)$(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(libfso_glib_la_CFLAGS) $(CFLAGS) -MT libfso_glib_la-freesmartphone-gsm.lo -MD -MP -MF $(DEPDIR)/libfso_glib_la-freesmartphone-gsm.Tpo -c -o libfso_glib_la-freesmartphone-gsm.lo `test -f 'freesmartphone-gsm.c' || echo '$(srcdir)/'`freesmartphone-gsm.c
+@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) $(DEPDIR)/libfso_glib_la-freesmartphone-gsm.Tpo $(DEPDIR)/libfso_glib_la-freesmartphone-gsm.Plo
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='freesmartphone-gsm.c' object='libfso_glib_la-freesmartphone-gsm.lo' libtool=yes @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(libfso_glib_la_CFLAGS) $(CFLAGS) -c -o libfso_glib_la-freesmartphone-gsm.lo `test -f 'freesmartphone-gsm.c' || echo '$(srcdir)/'`freesmartphone-gsm.c
+
+libfso_glib_la-freesmartphone-time.lo: freesmartphone-time.c
+@am__fastdepCC_TRUE@	$(AM_V_CC)$(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(libfso_glib_la_CFLAGS) $(CFLAGS) -MT libfso_glib_la-freesmartphone-time.lo -MD -MP -MF $(DEPDIR)/libfso_glib_la-freesmartphone-time.Tpo -c -o libfso_glib_la-freesmartphone-time.lo `test -f 'freesmartphone-time.c' || echo '$(srcdir)/'`freesmartphone-time.c
+@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) $(DEPDIR)/libfso_glib_la-freesmartphone-time.Tpo $(DEPDIR)/libfso_glib_la-freesmartphone-time.Plo
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='freesmartphone-time.c' object='libfso_glib_la-freesmartphone-time.lo' libtool=yes @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(libfso_glib_la_CFLAGS) $(CFLAGS) -c -o libfso_glib_la-freesmartphone-time.lo `test -f 'freesmartphone-time.c' || echo '$(srcdir)/'`freesmartphone-time.c
+
+libfso_glib_la-freesmartphone-pim.lo: freesmartphone-pim.c
+@am__fastdepCC_TRUE@	$(AM_V_CC)$(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(libfso_glib_la_CFLAGS) $(CFLAGS) -MT libfso_glib_la-freesmartphone-pim.lo -MD -MP -MF $(DEPDIR)/libfso_glib_la-freesmartphone-pim.Tpo -c -o libfso_glib_la-freesmartphone-pim.lo `test -f 'freesmartphone-pim.c' || echo '$(srcdir)/'`freesmartphone-pim.c
+@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) $(DEPDIR)/libfso_glib_la-freesmartphone-pim.Tpo $(DEPDIR)/libfso_glib_la-freesmartphone-pim.Plo
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='freesmartphone-pim.c' object='libfso_glib_la-freesmartphone-pim.lo' libtool=yes @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(libfso_glib_la_CFLAGS) $(CFLAGS) -c -o libfso_glib_la-freesmartphone-pim.lo `test -f 'freesmartphone-pim.c' || echo '$(srcdir)/'`freesmartphone-pim.c
+
+libfso_glib_la-freesmartphone-audio.lo: freesmartphone-audio.c
+@am__fastdepCC_TRUE@	$(AM_V_CC)$(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(libfso_glib_la_CFLAGS) $(CFLAGS) -MT libfso_glib_la-freesmartphone-audio.lo -MD -MP -MF $(DEPDIR)/libfso_glib_la-freesmartphone-audio.Tpo -c -o libfso_glib_la-freesmartphone-audio.lo `test -f 'freesmartphone-audio.c' || echo '$(srcdir)/'`freesmartphone-audio.c
+@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) $(DEPDIR)/libfso_glib_la-freesmartphone-audio.Tpo $(DEPDIR)/libfso_glib_la-freesmartphone-audio.Plo
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='freesmartphone-audio.c' object='libfso_glib_la-freesmartphone-audio.lo' libtool=yes @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(libfso_glib_la_CFLAGS) $(CFLAGS) -c -o libfso_glib_la-freesmartphone-audio.lo `test -f 'freesmartphone-audio.c' || echo '$(srcdir)/'`freesmartphone-audio.c
+$(srcdir)/freesmartphone.c: $(srcdir)/libfso_glib_la_vala.stamp
+	@if test -f $@; then :; else rm -f $(srcdir)/libfso_glib_la_vala.stamp; fi
+	@if test -f $@; then :; else \
+	  $(MAKE) $(AM_MAKEFLAGS) $(srcdir)/libfso_glib_la_vala.stamp; \
+	fi
+$(srcdir)/freesmartphone-context.c: $(srcdir)/libfso_glib_la_vala.stamp
+	@if test -f $@; then :; else rm -f $(srcdir)/libfso_glib_la_vala.stamp; fi
+	@if test -f $@; then :; else \
+	  $(MAKE) $(AM_MAKEFLAGS) $(srcdir)/libfso_glib_la_vala.stamp; \
+	fi
+$(srcdir)/freesmartphone-data.c: $(srcdir)/libfso_glib_la_vala.stamp
+	@if test -f $@; then :; else rm -f $(srcdir)/libfso_glib_la_vala.stamp; fi
+	@if test -f $@; then :; else \
+	  $(MAKE) $(AM_MAKEFLAGS) $(srcdir)/libfso_glib_la_vala.stamp; \
+	fi
+$(srcdir)/freesmartphone-device.c: $(srcdir)/libfso_glib_la_vala.stamp
+	@if test -f $@; then :; else rm -f $(srcdir)/libfso_glib_la_vala.stamp; fi
+	@if test -f $@; then :; else \
+	  $(MAKE) $(AM_MAKEFLAGS) $(srcdir)/libfso_glib_la_vala.stamp; \
+	fi
+$(srcdir)/freesmartphone-gsm.c: $(srcdir)/libfso_glib_la_vala.stamp
+	@if test -f $@; then :; else rm -f $(srcdir)/libfso_glib_la_vala.stamp; fi
+	@if test -f $@; then :; else \
+	  $(MAKE) $(AM_MAKEFLAGS) $(srcdir)/libfso_glib_la_vala.stamp; \
+	fi
+$(srcdir)/freesmartphone-time.c: $(srcdir)/libfso_glib_la_vala.stamp
+	@if test -f $@; then :; else rm -f $(srcdir)/libfso_glib_la_vala.stamp; fi
+	@if test -f $@; then :; else \
+	  $(MAKE) $(AM_MAKEFLAGS) $(srcdir)/libfso_glib_la_vala.stamp; \
+	fi
+$(srcdir)/freesmartphone-pim.c: $(srcdir)/libfso_glib_la_vala.stamp
+	@if test -f $@; then :; else rm -f $(srcdir)/libfso_glib_la_vala.stamp; fi
+	@if test -f $@; then :; else \
+	  $(MAKE) $(AM_MAKEFLAGS) $(srcdir)/libfso_glib_la_vala.stamp; \
+	fi
+$(srcdir)/freesmartphone-audio.c: $(srcdir)/libfso_glib_la_vala.stamp
+	@if test -f $@; then :; else rm -f $(srcdir)/libfso_glib_la_vala.stamp; fi
+	@if test -f $@; then :; else \
+	  $(MAKE) $(AM_MAKEFLAGS) $(srcdir)/libfso_glib_la_vala.stamp; \
+	fi
+$(srcdir)/freesmartphone.h: $(srcdir)/libfso_glib_la_vala.stamp
+	@if test -f $@; then :; else rm -f $(srcdir)/libfso_glib_la_vala.stamp; fi
+	@if test -f $@; then :; else \
+	  $(MAKE) $(AM_MAKEFLAGS) $(srcdir)/libfso_glib_la_vala.stamp; \
+	fi
+$(srcdir)/libfso_glib_la_vala.stamp: $(libfso_glib_la_SOURCES)
+	$(AM_V_at)rm -f $@ && echo stamp > $@-t
+	$(AM_V_VALAC)$(am__cd) $(srcdir) && $(VALAC) $(libfso_glib_la_VALAFLAGS) $(VALAFLAGS) -C $(libfso_glib_la_SOURCES)
+	$(AM_V_at)mv -f $@-t $@
 
 mostlyclean-libtool:
 	-rm -f *.lo
@@ -578,15 +716,14 @@ distdir: $(DISTFILES)
 	  fi; \
 	done
 check-am: all-am
-check: $(BUILT_SOURCES)
-	$(MAKE) $(AM_MAKEFLAGS) check-am
+	$(MAKE) $(AM_MAKEFLAGS) check-local
+check: check-am
 all-am: Makefile $(LTLIBRARIES) $(DATA) $(HEADERS)
 installdirs:
 	for dir in "$(DESTDIR)$(libdir)" "$(DESTDIR)$(girdir)" "$(DESTDIR)$(typelibdir)" "$(DESTDIR)$(vapidir)" "$(DESTDIR)$(libfso_glibdir)"; do \
 	  test -z "$$dir" || $(MKDIR_P) "$$dir"; \
 	done
-install: $(BUILT_SOURCES)
-	$(MAKE) $(AM_MAKEFLAGS) install-am
+install: install-am
 install-exec: install-exec-am
 install-data: install-data-am
 uninstall: uninstall-am
@@ -618,7 +755,16 @@ distclean-generic:
 maintainer-clean-generic:
 	@echo "This command is intended for maintainers to use"
 	@echo "it deletes files that may require special tools to rebuild."
-	-test -z "$(BUILT_SOURCES)" || rm -f $(BUILT_SOURCES)
+	-rm -f freesmartphone-audio.c
+	-rm -f freesmartphone-context.c
+	-rm -f freesmartphone-data.c
+	-rm -f freesmartphone-device.c
+	-rm -f freesmartphone-gsm.c
+	-rm -f freesmartphone-pim.c
+	-rm -f freesmartphone-time.c
+	-rm -f freesmartphone.c
+	-rm -f freesmartphone.h
+	-rm -f libfso_glib_la_vala.stamp
 clean: clean-am
 
 clean-am: clean-generic clean-libLTLIBRARIES clean-libtool \
@@ -693,19 +839,20 @@ uninstall-am: uninstall-girDATA uninstall-libLTLIBRARIES \
 	uninstall-libfso_glibHEADERS uninstall-typelibDATA \
 	uninstall-vapiDATA
 
-.MAKE: all check install install-am install-strip
+.MAKE: check-am install-am install-strip
 
-.PHONY: CTAGS GTAGS all all-am check check-am clean clean-generic \
-	clean-libLTLIBRARIES clean-libtool ctags distclean \
-	distclean-compile distclean-generic distclean-libtool \
-	distclean-tags distdir dvi dvi-am html html-am info info-am \
-	install install-am install-data install-data-am install-dvi \
-	install-dvi-am install-exec install-exec-am install-girDATA \
-	install-html install-html-am install-info install-info-am \
-	install-libLTLIBRARIES install-libfso_glibHEADERS install-man \
-	install-pdf install-pdf-am install-ps install-ps-am \
-	install-strip install-typelibDATA install-vapiDATA \
-	installcheck installcheck-am installdirs maintainer-clean \
+.PHONY: CTAGS GTAGS all all-am check check-am check-local clean \
+	clean-generic clean-libLTLIBRARIES clean-libtool ctags \
+	distclean distclean-compile distclean-generic \
+	distclean-libtool distclean-tags distdir dvi dvi-am html \
+	html-am info info-am install install-am install-data \
+	install-data-am install-dvi install-dvi-am install-exec \
+	install-exec-am install-girDATA install-html install-html-am \
+	install-info install-info-am install-libLTLIBRARIES \
+	install-libfso_glibHEADERS install-man install-pdf \
+	install-pdf-am install-ps install-ps-am install-strip \
+	install-typelibDATA install-vapiDATA installcheck \
+	installcheck-am installdirs maintainer-clean \
 	maintainer-clean-generic mostlyclean mostlyclean-compile \
 	mostlyclean-generic mostlyclean-libtool pdf pdf-am ps ps-am \
 	tags uninstall uninstall-am uninstall-girDATA \
@@ -713,11 +860,56 @@ uninstall-am: uninstall-girDATA uninstall-libLTLIBRARIES \
 	uninstall-typelibDATA uninstall-vapiDATA
 
 
-libfso_glib_la.vala.stamp: gen-bindings $(libfso_glib_la_VALASOURCES)
-	$(VALAC) -C ${VALACFLAGS} --basedir . $(libfso_glib_la_VALASOURCES)
-	touch $@
+### testing rules
 
-gen-bindings:
+# test: run all tests in cwd and subdirs
+test:	${TEST_PROGS}
+	@test -z "${TEST_PROGS}" || ${GTESTER} --verbose ${TEST_PROGS}
+	@ for subdir in $(SUBDIRS) . ; do \
+	    test "$$subdir" = "." -o "$$subdir" = "po" || \
+	    ( cd $$subdir && $(MAKE) $(AM_MAKEFLAGS) $@ ) || exit $? ; \
+	  done
+# test-report: run tests in subdirs and generate report
+# perf-report: run tests in subdirs with -m perf and generate report
+# full-report: like test-report: with -m perf and -m slow
+test-report perf-report full-report:	${TEST_PROGS}
+	@test -z "${TEST_PROGS}" || { \
+	  case $@ in \
+	  test-report) test_options="-k";; \
+	  perf-report) test_options="-k -m=perf";; \
+	  full-report) test_options="-k -m=perf -m=slow";; \
+	  esac ; \
+	  if test -z "$$GTESTER_LOGDIR" ; then	\
+	    ${GTESTER} --verbose $$test_options -o test-report.xml ${TEST_PROGS} ; \
+	  elif test -n "${TEST_PROGS}" ; then \
+	    ${GTESTER} --verbose $$test_options -o `mktemp "$$GTESTER_LOGDIR/log-XXXXXX"` ${TEST_PROGS} ; \
+	  fi ; \
+	}
+	@ ignore_logdir=true ; \
+	  if test -z "$$GTESTER_LOGDIR" ; then \
+	    GTESTER_LOGDIR=`mktemp -d "\`pwd\`/.testlogs-XXXXXX"`; export GTESTER_LOGDIR ; \
+	    ignore_logdir=false ; \
+	  fi ; \
+	  for subdir in $(SUBDIRS) . ; do \
+	    test "$$subdir" = "." -o "$$subdir" = "po" || \
+	    ( cd $$subdir && $(MAKE) $(AM_MAKEFLAGS) $@ ) || exit $? ; \
+	  done ; \
+	  $$ignore_logdir || { \
+	    echo '<?xml version="1.0"?>' > $@.xml ; \
+	    echo '<report-collection>'  >> $@.xml ; \
+	    for lf in `ls -L "$$GTESTER_LOGDIR"/.` ; do \
+	      sed '1,1s/^<?xml\b[^>?]*?>//' <"$$GTESTER_LOGDIR"/"$$lf" >> $@.xml ; \
+	    done ; \
+	    echo >> $@.xml ; \
+	    echo '</report-collection>' >> $@.xml ; \
+	    rm -rf "$$GTESTER_LOGDIR"/ ; \
+	    ${GTESTER_REPORT} --version 2>/dev/null 1>&2 ; test "$$?" != 0 || ${GTESTER_REPORT} $@.xml >$@.html ; \
+	  }
+.PHONY: test test-report perf-report full-report
+# run make test as part of make check
+check-local: test
+
+$(libfso_glib_la_SOURCES):
 	vala-dbus-binding-tool $(DBUSBINDINGTOOLFLAGS)
 
 @TYPELIB_TRUE@FreeSmartphone-1.0.typelib:FreeSmartphone-1.0.gir
