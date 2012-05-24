@@ -1,6 +1,4 @@
-Format: http://anonscm.debian.org/viewvc/dep/web/deps/dep5.mdwn?revision=174
-Upstream-Name: libfso-glib
-Upstream-Contact: Heiko Stuebner <heiko@sntech.de>
+Format: http://www.debian.org/doc/packaging-manuals/copyright-format/1.0/
 Source: http://www.freesmartphone.org
 
 Files: *
