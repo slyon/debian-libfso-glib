@@ -100,6 +100,8 @@ libfso-glib.so.1 libfso-glib1 #MINVER#
  free_smartphone_data_world_get_apns_for_mcc_mnc_finish@Base 2012.02.16.1
  free_smartphone_data_world_get_country_code_for_mcc_mnc@Base 2012.02.16.1
  free_smartphone_data_world_get_country_code_for_mcc_mnc_finish@Base 2012.02.16.1
+ free_smartphone_data_world_get_provider_name_for_mcc_mnc@Base 2012.05.24.1
+ free_smartphone_data_world_get_provider_name_for_mcc_mnc_finish@Base 2012.05.24.1
  free_smartphone_data_world_get_timezones_for_country_code@Base 2012.02.16.1
  free_smartphone_data_world_get_timezones_for_country_code_finish@Base 2012.02.16.1
  free_smartphone_data_world_get_type@Base 2012.02.16.1
@@ -108,6 +110,7 @@ libfso-glib.so.1 libfso-glib1 #MINVER#
  free_smartphone_data_world_sync_get_all_countries@Base 2012.02.16.1
  free_smartphone_data_world_sync_get_apns_for_mcc_mnc@Base 2012.02.16.1
  free_smartphone_data_world_sync_get_country_code_for_mcc_mnc@Base 2012.02.16.1
+ free_smartphone_data_world_sync_get_provider_name_for_mcc_mnc@Base 2012.05.24.1
  free_smartphone_data_world_sync_get_timezones_for_country_code@Base 2012.02.16.1
  free_smartphone_data_world_sync_get_type@Base 2012.02.16.1
  free_smartphone_data_world_sync_proxy_get_type@Base 2012.02.16.1
@@ -735,6 +738,15 @@ libfso-glib.so.1 libfso-glib1 #MINVER#
  free_smartphone_info_sync_get_type@Base 2012.02.16.1
  free_smartphone_info_sync_proxy_get_type@Base 2012.02.16.1
  free_smartphone_info_sync_register_object@Base 2012.02.16.1
+ free_smartphone_location_get_location@Base 2012.05.24.1
+ free_smartphone_location_get_location_finish@Base 2012.05.24.1
+ free_smartphone_location_get_type@Base 2012.05.24.1
+ free_smartphone_location_proxy_get_type@Base 2012.05.24.1
+ free_smartphone_location_register_object@Base 2012.05.24.1
+ free_smartphone_location_sync_get_location@Base 2012.05.24.1
+ free_smartphone_location_sync_get_type@Base 2012.05.24.1
+ free_smartphone_location_sync_proxy_get_type@Base 2012.05.24.1
+ free_smartphone_location_sync_register_object@Base 2012.05.24.1
  free_smartphone_network_get_type@Base 2012.02.16.1
  free_smartphone_network_offer_default_route@Base 2012.02.16.1
  free_smartphone_network_offer_default_route_finish@Base 2012.02.16.1
@@ -1009,6 +1021,18 @@ libfso-glib.so.1 libfso-glib1 #MINVER#
  free_smartphone_pim_fields_sync_register_object@Base 2012.02.16.1
  free_smartphone_pim_message_delete@Base 2012.02.16.1
  free_smartphone_pim_message_delete_finish@Base 2012.02.16.1
+ free_smartphone_pim_message_folder_get_message_count@Base 2012.05.24.1
+ free_smartphone_pim_message_folder_get_message_count_finish@Base 2012.05.24.1
+ free_smartphone_pim_message_folder_get_message_paths@Base 2012.05.24.1
+ free_smartphone_pim_message_folder_get_message_paths_finish@Base 2012.05.24.1
+ free_smartphone_pim_message_folder_get_type@Base 2012.05.24.1
+ free_smartphone_pim_message_folder_proxy_get_type@Base 2012.05.24.1
+ free_smartphone_pim_message_folder_register_object@Base 2012.05.24.1
+ free_smartphone_pim_message_folder_sync_get_message_count@Base 2012.05.24.1
+ free_smartphone_pim_message_folder_sync_get_message_paths@Base 2012.05.24.1
+ free_smartphone_pim_message_folder_sync_get_type@Base 2012.05.24.1
+ free_smartphone_pim_message_folder_sync_proxy_get_type@Base 2012.05.24.1
+ free_smartphone_pim_message_folder_sync_register_object@Base 2012.05.24.1
  free_smartphone_pim_message_get_content@Base 2012.02.16.1
  free_smartphone_pim_message_get_content_finish@Base 2012.02.16.1
  free_smartphone_pim_message_get_multiple_fields@Base 2012.02.16.1
