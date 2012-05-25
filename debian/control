@@ -49,7 +49,6 @@ Description: Development files for libfso-glib
 Package: libfso-glib-dbg
 Architecture: any
 Section: debug
-Pre-Depends: ${misc:Pre-Depends}
 Depends: ${misc:Depends},
          libfso-glib1 (= ${binary:Version})
 Description: debugging symbols for use with libfso-glib
