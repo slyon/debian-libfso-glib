@@ -1,11 +1,15 @@
 libfso-glib (2012.05.24.1-1) unstable; urgency=low
 
+  [ Simon Busch ]
   * Import upstream release 2012.05.24.1
   * build from vala source instead from precompiled c sources
   * removed clean-vala-sources.patch
   * Drop fix-so-version.patch; ABI is now controled by upstream
 
- -- Simon Busch <morphis@gravedo.de>  Thu, 24 May 2012 08:23:58 +0200
+  [ Sebastian Reichel ]
+  * Switch to Debian Copyright Format 1.0
+
+ -- Sebastian Reichel <sre@debian.org>  Fri, 25 May 2012 18:33:06 +0200
 
 libfso-glib (2012.02.16.1-1) unstable; urgency=low
 
