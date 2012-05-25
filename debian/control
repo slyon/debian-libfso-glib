@@ -7,7 +7,7 @@ Uploaders: Heiko Stuebner <heiko@sntech.de>,
 DM-Upload-Allowed: yes
 Build-Depends: debhelper (>= 9),
                dh-autoreconf,
-               fso-specs (>= 2012.02.16.1),
+               fso-specs (>= 2012.05.24.1),
                libvala-0.14-dev,
                libglib2.0-dev (>=2.26.0),
                pkg-config,
