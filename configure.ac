@@ -1,12 +1,12 @@
-m4_define([fso_glib_released], [1])
-m4_define([fso_glib_version], [2012.05.24.1])
+m4_define([fso_glib_released], [0])
+m4_define([fso_glib_version], [2012.07.27.2])
 
 # If library source has changed since last release, increment revision
 # If public symbols have been added, removed or changed since last release,
 #  increment current and set revision to 0
 # If public symbols have been added since last release, increment age
 # If public symbols have been removed since last release, set age to 0
-m4_define([fso_glib_lt_current], [1])
+m4_define([fso_glib_lt_current], [2])
 m4_define([fso_glib_lt_revision], [0])
 m4_define([fso_glib_lt_age], [0])
 
@@ -83,7 +83,7 @@ AS_IF([test "x$enable_typelib" != xno],
 # Check for various dependencies
 #########################################################################################
 
-VDBT_REQUIRED=0.1.3
+VDBT_REQUIRED=0.4.0
 GLIB_REQUIRED=2.12.0
 DBUS_REQUIRED=0.70
 SPECS_REQUIRED=$PACKAGE_VERSION
