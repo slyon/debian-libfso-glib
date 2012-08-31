@@ -1,3 +1,9 @@
+libfso-glib (2012.07.27.2-1) unstable; urgency=low
+
+  * New upstream release
+
+ -- Lukas Märdian <lukasmaerdian@googlemail.com>  Fri, 31 Aug 2012 09:58:28 +0200
+
 libfso-glib (2012.05.24.1-1) unstable; urgency=low
 
   [ Simon Busch ]

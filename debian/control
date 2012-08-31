@@ -7,20 +7,20 @@ Uploaders: Heiko Stuebner <heiko@sntech.de>,
 DM-Upload-Allowed: yes
 Build-Depends: debhelper (>= 9),
                dh-autoreconf,
-               fso-specs (>= 2012.05.24.1),
-               libvala-0.14-dev,
+               fso-specs (>= 2012.07.27.2),
+               libvala-0.16-dev,
                libglib2.0-dev (>=2.26.0),
                pkg-config,
                quilt,
-               vala-dbus-binding-tool (>= 0.3.3~git20110523),
-               valac-0.14
+               vala-dbus-binding-tool (>= 0.4.0),
+               valac-0.16
 Standards-Version: 3.9.3
 Section: libs
 Homepage: http://freesmartphone.org/
 Vcs-Git: git://git.debian.org/git/pkg-fso/libfso-glib.git
 Vcs-Browser: http://git.debian.org/?p=pkg-fso/libfso-glib.git;a=summary
 
-Package: libfso-glib1
+Package: libfso-glib2
 Architecture: any
 Pre-Depends: ${misc:Pre-Depends}
 Depends: ${shlibs:Depends},
@@ -36,7 +36,7 @@ Package: libfso-glib-dev
 Section: libdevel
 Architecture: any
 Depends: ${misc:Depends},
-         libfso-glib1 (= ${binary:Version}),
+         libfso-glib2 (= ${binary:Version}),
          libglib2.0-dev (>=2.26.0)
 Description: Development files for libfso-glib
  This package is part of the freesmartphone.org software stack and is targeted
@@ -50,7 +50,7 @@ Package: libfso-glib-dbg
 Architecture: any
 Section: debug
 Depends: ${misc:Depends},
-         libfso-glib1 (= ${binary:Version})
+         libfso-glib2 (= ${binary:Version})
 Description: debugging symbols for use with libfso-glib
  This package is part of the freesmartphone.org software stack and is targeted
  for smartphones.
