@@ -1,8 +1,11 @@
 libfso-glib (2012.07.27.2-1) unstable; urgency=low
 
   * New upstream release
+  * Bump ABI version
+  * Update to vala 0.16
+  * Update to vala-dbus-binding-tool 0.4.0
 
- -- Lukas Märdian <lukasmaerdian@googlemail.com>  Fri, 31 Aug 2012 09:58:28 +0200
+ -- Lukas Märdian <luk@slyon.de>  Fri, 31 Aug 2012 09:58:28 +0200
 
 libfso-glib (2012.05.24.1-1) unstable; urgency=low
 
